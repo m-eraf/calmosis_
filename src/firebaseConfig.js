@@ -1,13 +1,14 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCxmVFpcBq40PCq2yr6EArmX5WfgYKddlY",
-  authDomain: "otp-verify-55e6a.firebaseapp.com",
-  projectId: "otp-verify-55e6a",
-  storageBucket: "otp-verify-55e6a.appspot.com",
-  messagingSenderId: "461399382630",
-  appId: "1:461399382630:web:da81a28eeb338e7c03eba7",
-  measurementId: "G-0FQQMFSVGV"
+  apiKey: "AIzaSyB8fR7nyZpe00gGHwkfL-38L63eAG6W7qc",
+  authDomain: "calmosis-4a44c.firebaseapp.com",
+  databaseURL: "https://calmosis-4a44c-default-rtdb.firebaseio.com",
+  projectId: "calmosis-4a44c",
+  storageBucket: "calmosis-4a44c.appspot.com",
+  messagingSenderId: "518864201191",
+  appId: "1:518864201191:web:4f8fe52557cb1f40f8c942",
+  measurementId: "G-WC2HQ1B7KM"
 };
 
 firebase.initializeApp(firebaseConfig);
