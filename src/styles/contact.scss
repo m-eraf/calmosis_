@@ -1,0 +1,208 @@
+// import numans
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+main.contact {
+  font-family: "Numans", sans-serif;
+  .content {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    margin: 0 50px;
+    color: white;
+  }
+
+  h2.out {
+    font-size: 40px;
+    font-weight: 400;
+    margin: 20px 0;
+    color: white;
+    text-align: center;
+  }
+
+
+  .content .left {
+    width: 70%;
+
+    @media (max-width: 768px) {
+      width: 110%;
+    }
+
+    .input-flex {
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      
+  }
+
+    .form-control {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      label {
+        font-family: "Numans", sans-serif;
+        font-size: 16px;
+        opacity: 0.75;
+        font-weight: 400;
+      }
+
+      .coupon,
+      input {
+        margin-top: 10px;
+        padding: 10px 20px;
+        width: 100%;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border: 1px solid rgba($color: white, $alpha: 0.75);
+        color: white;
+        font-weight: 400;
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        color-scheme: dark;
+        transition: all 0.3s ease-in-out;
+
+        &::placeholder {
+          color: white;
+          opacity: 0.75;
+          font-weight: 400;
+        }
+
+        &:focus {
+          border: 1px solid white;
+        }
+      }
+
+      .coupon {
+        width: 40%;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: rgba($color: white, $alpha: 0.75);
+          color: #466f44;
+        }
+      }
+
+      &.gender {
+        margin-top: 10px;
+
+        input {
+          // width: auto;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+
+          width: 20px;
+          height: 20px;
+          border: 1px solid white;
+          cursor: pointer;
+          border-radius: 50%;
+          outline: none;
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+
+          &:checked {
+            border: 1px solid white;
+          }
+
+          &:checked::before {
+            background: white;
+          }
+        }
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+    }
+
+    textarea {
+      margin-top: 10px;
+      padding: 10px 20px;
+      width: 100%;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      border: 1px solid rgba($color: white, $alpha: 0.75);
+      color: white;
+      font-weight: 400;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color-scheme: dark;
+      transition: all 0.3s ease-in-out;
+
+      &::placeholder {
+        color: white;
+        opacity: 0.75;
+        font-weight: 400;
+      }
+
+      &:focus {
+        border: 1px solid white;
+      }
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      z-index: 1;
+      flex-direction: column;
+      font-size: 14px; 
+    }
+    .right {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      font-size: 16px;
+
+      @media (max-width: 768px) {
+        z-index: 1;
+        margin-top: 4%;
+        flex-direction: column;
+        font-size: 20px; 
+      }
+      strong {
+        opacity: 1;
+        font-size: 25px;
+        font-weight: 900;
+      }
+      p{
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+button.btn-style-2 {
+  opacity: 1;
+  border-radius: 50px;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgba($color: white, $alpha: 0.75);
+    color: #466f44;
+  }
+}
+

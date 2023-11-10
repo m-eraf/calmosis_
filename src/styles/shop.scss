@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Numans&display=swap');
+
+main.shop {
+    .content {
+        padding-top: 150px;
+        color: white;
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 150px;
+
+            .card {
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                padding: 10px;
+                margin-left: 20px;
+                gap: 10px;
+
+                display: flex;
+                text-align: left;
+                justify-content: space-around;
+                flex-direction: column;
+
+                img {
+                    width: 70%;
+                    margin: 0 auto;
+                    border-radius: 5px;
+                }
+
+                h3 {
+                    font-size: 2rem;
+                }
+
+                p,
+                span {
+                    font-family: 'Numans', sans-serif;
+                    color: rgba(255, 255, 255, 0.5);
+                }
+
+                span {
+
+                    strong {
+                        color: white;
+                    }
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                a {
+                    span {
+                        color: white;
+                    }
+                }
+
+            }
+        }
+    }
+}

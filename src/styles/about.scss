@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+
+main.about {
+  height: 100%;
+  .content {
+    width: 87%;
+    position: relative;
+    padding-top: 200px;
+    margin: 10px auto;
+    color: white;
+
+    .two {
+      margin-bottom: 10% auto;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      &:first-child {
+        height: auto;
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5em;
+
+        h2 {
+          line-height: 1.5em;
+          font-size: 40px;
+          font-weight: 400;
+        }
+
+        p {
+          font-family: "Numans", sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 25px;
+          font-size: 16px;
+          color: rgba(255, 255, 255, 0.75);
+          opacity: 0.75;
+
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .one {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h2 {
+        font-size: 40px;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+      p {
+        font-family: "Numans", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 25px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.75);
+        opacity: 0.75;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+
+  .bg-flower {
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+    z-index: -1;
+  }
+}
+
+main.block {
+  .content {
+    padding-top: 100px;
+    margin: 0 50px;
+    color: white;
+
+    h2.out {
+      font-size: 40px;
+      font-weight: 400;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .one {
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h2 {
+        font-size: 40px;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-family: "Numans", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 25px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.75);
+        opacity: 0.75;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+}
