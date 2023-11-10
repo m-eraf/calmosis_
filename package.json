@@ -1,6 +1,5 @@
 {
   "name": "client",
-  "proxy": "https://calmosiss.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -51,5 +50,7 @@
   "devDependencies": {
     "sass": "^1.69.5",
     "tailwindcss": "^3.3.5"
-  }
+  },
+  "proxy": "https://calmosiss.onrender.com"
+
 }

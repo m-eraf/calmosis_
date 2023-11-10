@@ -62,7 +62,7 @@ const OtpLOgin = () => {
 
     try {
       const res = await final.confirm(otp);
-      const ress = await axios.post("https://calmosiss.onrender.com/verify", {
+      const ress = await axios.post("/verify", {
         otp,
         phoneNumber,
       });
