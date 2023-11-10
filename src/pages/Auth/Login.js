@@ -19,7 +19,7 @@ const Login = () => {
     setLoading(true); // Set loading state to true when submitting the form
   
     try {
-      const res = await axios.post("/api/v1/auth/login", {
+      const res = await axios.post("https://calmosiss.onrender.com/api/v1/auth/login", {
         email,
         password,
       });

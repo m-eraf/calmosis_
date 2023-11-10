@@ -9,7 +9,7 @@ const AddPrescriptionDoctor = () => {
 
   useEffect(() => {
     // Fetch orders from your API when the component mounts
-    fetch('/api/order')
+    fetch('https://calmosiss.onrender.com/api/order')
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);

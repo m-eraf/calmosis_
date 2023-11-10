@@ -13,7 +13,7 @@ const DashboardOrders = () => {
     // Check if the user is logged in
     if (auth.user) {
       // Make an API request to fetch the orders data for the logged-in user
-      fetch(`/api/orders?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/api/orders?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setOrders(data);

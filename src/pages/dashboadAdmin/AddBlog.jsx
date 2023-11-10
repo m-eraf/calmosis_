@@ -29,7 +29,7 @@ const AdminBlog = () => {
       productData.append("quantity", quantity);
       productData.append("photo", photo);
       const { data } = axios.post(
-        "/api/v1/product/create-product",
+        "https://calmosiss.onrender.com/api/v1/product/create-product",
         productData
       );
       if (data?.success) {

@@ -41,7 +41,7 @@ const PeaceMantra = () => {
   const [addresses, setAddresses] = useState([]);
   useEffect(() => {
     if (auth.user) {
-      fetch(`/api/addresses?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/api/addresses?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setAddresses(data);
@@ -53,7 +53,7 @@ const PeaceMantra = () => {
   }, [auth?.user]);
   useEffect(() => {
     if (auth.user) {
-      fetch(`/get-cart?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/get-cart?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setCartItems(data);
@@ -71,7 +71,7 @@ const PeaceMantra = () => {
 
   const handleDeleteCartItem = (itemId) => {
     // Make a DELETE request to the server to delete the cart item
-    fetch(`/api/delete-cart-item/${itemId}`, {
+    fetch(`https://calmosiss.onrender.com/api/delete-cart-item/${itemId}`, {
       method: 'DELETE',
     })    
       .then((response) => {
@@ -101,7 +101,7 @@ const PeaceMantra = () => {
     }
   
     // Make a DELETE request to delete all addresses associated with the user
-    fetch(`/api/addresses/delete/${userId}`, {
+    fetch(`https://calmosiss.onrender.com/api/addresses/delete/${userId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -129,7 +129,7 @@ const PeaceMantra = () => {
       "Content-Type": "application/json",
     };
   
-    const response = await fetch("/api/create-checkout-session", {
+    const response = await fetch("https://calmosiss.onrender.com/api/create-checkout-session", {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
@@ -162,7 +162,7 @@ const PeaceMantra = () => {
     setCartItems(updatedCart);
   
     // Send an API request to update the item's quantity in the database
-    fetch(`/api/update-cart-item/${itemId}`, {
+    fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -199,7 +199,7 @@ const PeaceMantra = () => {
       setCartItems(updatedCart);
   
       // Send an API request to update the item's quantity in the database
-      fetch(`/api/update-cart-item/${itemId}`, {
+      fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -246,7 +246,7 @@ const PeaceMantra = () => {
     };
 
     try {
-      const response = await fetch('/api/addresses', {
+      const response = await fetch('https://calmosiss.onrender.com/api/addresses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -272,7 +272,7 @@ const PeaceMantra = () => {
 
   const fetchAddresses = async () => {
     if (auth.user) {
-      fetch(`/api/addresses?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/api/addresses?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setAddresses(data);

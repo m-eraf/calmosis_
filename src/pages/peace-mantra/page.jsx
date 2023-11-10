@@ -125,7 +125,7 @@ const PeaceMantra = () => {
     setCartItems(updatedCart);
 
     // Send an API request to update the item's quantity in the database
-    fetch(`/api/update-cart-item/${itemId}`, {
+    fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -163,7 +163,7 @@ const PeaceMantra = () => {
       setCartItems(updatedCart);
 
       // Send an API request to update the item's quantity in the database
-      fetch(`/api/update-cart-item/${itemId}`, {
+      fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -193,7 +193,7 @@ const PeaceMantra = () => {
 
   const fetchCartItems = () => {
     if (auth.user) {
-      fetch(`/get-cart?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/get-cart?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setCartItems(data);
@@ -213,7 +213,7 @@ const PeaceMantra = () => {
     // Check if the user is logged in
     if (auth.user) {
       // Make an API request to fetch the cart data for the logged-in user
-      fetch(`/get-cart?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/get-cart?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           // Update the cartItems state with the received data
@@ -244,7 +244,7 @@ const PeaceMantra = () => {
 
   const handleDeleteCartItem = (itemId) => {
     // Make a DELETE request to the server to delete the cart item
-    fetch(`/api/delete-cart-item/${itemId}`, {
+    fetch(`https://calmosiss.onrender.com/api/delete-cart-item/${itemId}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -365,7 +365,7 @@ const PeaceMantra = () => {
     };
 
     try {
-      const response = await fetch("/api/add-to-cart", {
+      const response = await fetch("https://calmosiss.onrender.com/api/add-to-cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

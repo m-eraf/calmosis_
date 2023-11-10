@@ -11,7 +11,7 @@ const DashboardAddress = () => {
     // Check if the user is logged in
     if (auth.user) {
       // Make an API request to fetch the cart data for the logged-in user
-      fetch(`/api/addresses?userId=${auth?.user?._id}`)
+      fetch(`https://calmosiss.onrender.com/api/addresses?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           // Update the cartItems state with the received data

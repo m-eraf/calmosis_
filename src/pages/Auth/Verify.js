@@ -15,7 +15,7 @@ const OtpVerify = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/verify", {
+      const res = await axios.post("https://calmosiss.onrender.com/verify", {
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);

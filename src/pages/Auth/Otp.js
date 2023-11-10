@@ -14,7 +14,7 @@ const OtpLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/login", {
+      const res = await axios.post("https://calmosiss.onrender.com/login", {
         phoneNumber,
       });
       if (res && res.data.success) {

@@ -60,7 +60,7 @@ const ForgotPasssword = () => {
 
     try {
       const res = await final.confirm(otp);
-      const ress = await axios.post("/verify", {
+      const ress = await axios.post("https://calmosiss.onrender.com/verify", {
         otp,
         phoneNumber,
       });

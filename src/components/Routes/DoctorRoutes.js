@@ -10,7 +10,7 @@ export default function DoctorRoute() {
 
   useEffect(() => {
     const authCheck = async () => {
-      const res = await axios.get("/api/v1/auth/doctor-auth");
+      const res = await axios.get("https://calmosiss.onrender.com/api/v1/auth/doctor-auth");
       if (res.data.ok) {
         setOk(true);    
       } else {
