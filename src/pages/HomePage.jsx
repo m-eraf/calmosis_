@@ -152,7 +152,9 @@ export default function Landing() {
   };
   return (
     <>
-      <nav className="home md:h-[20vh] h-[10vh] md:z-1 z-200	">
+        <main id="home">
+
+      <nav className="home md:h-[20vh] h-[10vh] md:z-1	">
         <div className="left md:flex hidden">
           <ul>
             <li>
@@ -402,6 +404,8 @@ export default function Landing() {
       <main>
         <HomePage />
       </main>
+      </main>
+
     </>
   );
 }

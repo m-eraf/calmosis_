@@ -12,16 +12,12 @@ import AdminRoute from "./components/Routes/AdminRoute";
 import DoctorRoute from "./components/Routes/DoctorRoutes";
 import AdminDashboard from "./pages/dashboadAdmin/AdminDashboard";
 import AddProduct from "./pages/dashboadAdmin/AddProduct";
-import Search from "./pages/Search";
-import CartPage from "./pages/CartPage";
 import Blog from "./pages/blog/page";
 import Shop from "./pages/legal/shop/page";
 import PeaceMantra from "./pages/peace-mantra/page";
 import Shipping from "./pages/legal/shipping/page";
 import Store from "./pages/legal/store/page";
 import FAQ from "./pages/legal/faq/page";
-import OtpLogin from "./pages/Auth/Otp";
-import OtpVerify from "./pages/Auth/Verify";
 import OtpLOgin from "./OtpLOgin";
 import DashboardOrders from "./pages/dashboadUser/DashboardOrders";
 import DashboardPrescription from "./pages/dashboadUser/DashboardPrescription";
@@ -41,6 +37,8 @@ import CheckoutPopup from "./pages/peace-mantra/CheckOut";
 import Success from "./pages/Success.jsx";
 import Cancel from "./pages/Cancel.jsx";
 import SleepMantra from "./pages/sleep-mantra/page";
+
+
 function App() {
   return (
     
@@ -60,8 +58,6 @@ function App() {
         <Route path="/legal/faq" element={<FAQ />} />
         <Route path="/legal/Store" element={<Store />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<DashboardOrders />} />
@@ -89,9 +85,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         {/* <Route path="/forgot-password" element={<ForgotPasssword />} /> */}
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/otp" element={<OtpLogin />} />
-        <Route path="/verify" element={<OtpVerify />} /> */}
-
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Pagenotfound />} />

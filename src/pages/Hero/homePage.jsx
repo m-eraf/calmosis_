@@ -36,7 +36,7 @@ const HomePage = () => {
       {/* <div className="bg md:flex hidden">
         <img className="bg md:flex hidden home_image" src="blend_bg.png" alt="" />
       </div> */}
-      <p className="text-centre text-center justify-center items-center centre sm:text-[50px] text-[16px] sm:p-16 xs:p-8 px-6 py-12" >
+      <p className="text-centre text-center justify-center items-center centre sm:text-[30px] text-[16px] sm:p-16 xs:p-8 px-6 py-12" >
         Experience the epitome of trust with our THC and CBD 
         full-spectrum products, perfectly tailored to enhance your lifestyle.
       </p>
@@ -67,8 +67,8 @@ const HomePage = () => {
             },
           }}
         >
-          <h1 className="text-[25px] md:text-[75px] text-start justify-center ">Peace Mantra</h1>
-          <p className="text-[15px] md:text-[20px] text-start  w-[45vh] sm:w-full">
+          <h1 className="text-[25px] lg:text-[50px] xl:text-[55px] text-start justify-center ">Peace Mantra</h1>
+          <p className="text-[15px] md:text-[20px] text-start  w-[42vh] sm:w-full">
             Sleep Mantra, thoughtfully crafted by Calmosis,is a sacred blend
             rooted in ancient Ayurvedic traditions, devoted to nurturing
             peaceful and restorative sleep. Enriched with 2000mg of
@@ -132,8 +132,8 @@ const HomePage = () => {
           }}
           className="text sm:p-8 xs:p-2 px-6 py-6 "
         >
-          <h1 className="text-[25px] md:text-[75px] text-start justify-center">Sleep Mantra</h1>
-          <p className="text-[15px] md:text-[20px] text-start   w-[45vh] sm:w-full">
+          <h1 className="text-[25px] lg:text-[50px] xl:text-[55px] text-start justify-center  ">Sleep Mantra</h1>
+          <p className="text-[15px] md:text-[20px] text-start   w-[42vh] sm:w-full">
             Sleep Mantra, thoughtfully crafted by Calmosis,is a sacred blend
             rooted in ancient Ayurvedic traditions, devoted to nurturing
             peaceful and restorative sleep. Enriched with 2000mg of
@@ -199,7 +199,7 @@ const HomePage = () => {
               ease: "easeInOut",
             },
           }}
-          className="workthrough md:hidden flex"
+          className="workthroughg "
         >
           <img src="./group2.png" />
         </motion.div>
@@ -213,7 +213,7 @@ const HomePage = () => {
               ease: "easeInOut",
             },
           }}
-          className="workthrough md:flex hidden"
+          className="workthrough "
         >
           <img src="./workthrough.png" />
         </motion.div>

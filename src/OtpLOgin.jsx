@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { firebase, auth } from './firebaseConfig';
 import { useAuth } from ".././src/context/auth";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Layout from './components/Layout/Layout';
