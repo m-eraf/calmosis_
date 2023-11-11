@@ -122,7 +122,7 @@ const PeaceMantra = () => {
       user: auth?.user?._id,
       username:auth?.user?.name,
       number: auth?.user?.phoneNumber,
-      email: "auth?.user?.email"
+      email: auth?.user?.email,
     };
 
     const headers = {

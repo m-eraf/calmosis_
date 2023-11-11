@@ -116,8 +116,8 @@ const Footer = () => {
           </div>
         
        
-        <div className="row md:hidden flex leading-[.1em]">
-          <h3 className="leading-[1px]">Quick Contact</h3>
+        <div className="row top-[-3vh] md:hidden flex ">
+          <h3 >Quick Contact</h3>
           <div className="">
             <p>calm@calmosis.com</p>
             <p>Tel; +91-790-890-890</p>
