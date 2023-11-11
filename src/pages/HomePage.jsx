@@ -177,7 +177,7 @@ export default function Landing() {
             <a className="flex md:hidden" href="/">
               {/* <img  src="./black.png" alt="" /> */}
             </a>
-            <li className="md:flex hidden" >              <a href="/blog">Blog</a>
+            <li className="md:flex hidden" >              <a href="/legal/faq">FAQ</a>
             </li>
             <li className="md:flex hidden">              <a href="/Contact">Contact</a>
             </li>

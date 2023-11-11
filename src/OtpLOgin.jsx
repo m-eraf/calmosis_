@@ -59,6 +59,24 @@ const OtpLOgin = () => {
     }
   }
 
+  const handleOtpChange = (e, index) => {
+    const newOtp = [...otp];
+    newOtp[index - 1] = e.target.value;
+    setotp(newOtp.join(""));
+  
+    if (e.target.value === "" && e.keyCode === 8 && index > 1) {
+      document.getElementById(`otp-input-${index - 1}`).focus();
+    }
+  
+    if (index < 6 && e.target.value !== "") {
+      document.getElementById(`otp-input-${index + 1}`).focus();
+    }
+  };
+  
+  
+  
+  
+
   const ValidateOtp = async () => {
     setLoading(true); // Set loading state to true when validating OTP
 
@@ -122,12 +140,25 @@ const OtpLOgin = () => {
               </button>
             </div>
             <div style={{ display: show ? "block" : "none" }}>
-              <input className='form-controll' type="text" placeholder={"Enter your OTP"} onChange={(e) => { setotp(e.target.value) }}></input>
-              <br /><br />
-              <button className=" buttonn btn btn-primary" onClick={ValidateOtp} disabled={loading}>
-                {loading ? "Verifying..." : "Verify"}
-              </button>
-            </div>
+  <div className="otp-input-container">
+    {[1, 2, 3, 4, 5, 6].map((index) => (
+      <input
+        key={index}
+        type="text"
+        maxLength="1"
+        className="otp-input"
+        value={otp[index - 1] || ""}
+        onChange={(e) => handleOtpChange(e, index)}
+        id={`otp-input-${index}`} 
+      />
+    ))}
+  </div>
+  <br /><br />
+  <button className=" buttonn btn btn-primary" onClick={ValidateOtp} disabled={loading}>
+    {loading ? "Verifying..." : "Verify"}
+  </button>
+</div>
+
           </center>
         </div>
       </main>

@@ -69,10 +69,8 @@ const HomePage = () => {
         >
           <h1 className="text-[25px] lg:text-[50px] xl:text-[55px] text-start justify-center ">Peace Mantra</h1>
           <p className="text-[15px] md:text-[20px] text-start  w-[42vh] sm:w-full">
-            Sleep Mantra, thoughtfully crafted by Calmosis,is a sacred blend
-            rooted in ancient Ayurvedic traditions, devoted to nurturing
-            peaceful and restorative sleep. Enriched with 2000mg of
-            full-spectrum THC and CBD, along with the potent essence of <br />
+          Introducing "Peace Mantra," our remarkable product that reflects our unwavering dedication to holistic well-being. But that's not all. "Peace Mantra" is a versatile elixir renowned for improving sleep quality enhancing cognitive function,and promoting sexual wellness, amongst other health benefits.
+ <br />
             <a href="#">Know More</a>
           </p>
 
@@ -134,10 +132,8 @@ const HomePage = () => {
         >
           <h1 className="text-[25px] lg:text-[50px] xl:text-[55px] text-start justify-center  ">Sleep Mantra</h1>
           <p className="text-[15px] md:text-[20px] text-start   w-[42vh] sm:w-full">
-            Sleep Mantra, thoughtfully crafted by Calmosis,is a sacred blend
-            rooted in ancient Ayurvedic traditions, devoted to nurturing
-            peaceful and restorative sleep. Enriched with 2000mg of
-            full-spectrum THC and CBD, along with the potent essence of <br />
+          Introducing Sleep Mantra - your Ayurvedic ally for a revitalizing night's sleep! Our expertly crafted elixir synchronizes with your Endocannabinoid System (ECS) to ensure you awaken refreshed and prepared for a new day. Quality sleep is essential for a well-rested and vibrant life, and "Sleep Mantra" is your guide to achieving Ayurvedic well-being.
+ <br />
             <a href="#">Know More</a>{" "}
           </p>
 

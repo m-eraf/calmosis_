@@ -407,22 +407,22 @@ const PeaceMantra = () => {
     }
   };
 
-  useEffect(() => {
-    const delay = 3900; // 5 seconds in milliseconds
-    const timer = setTimeout(() => {
-      setIsAboveShopVisible(false); // Hide the above_shop element
-    }, delay);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const delay = 3900; // 5 seconds in milliseconds
+  //   const timer = setTimeout(() => {
+  //     setIsAboveShopVisible(false); // Hide the above_shop element
+  //   }, delay);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  useEffect(() => {
-    const delay = 3000; // 5 seconds in milliseconds
-    const timer = setTimeout(() => {
-      handleImageSwap();
-    }, delay);
+  // useEffect(() => {
+  //   const delay = 3000; // 5 seconds in milliseconds
+  //   const timer = setTimeout(() => {
+  //     handleImageSwap();
+  //   }, delay);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
   return (
     <>
       <div></div>
@@ -453,7 +453,7 @@ const PeaceMantra = () => {
                 </a>
 
               <li className="md:flex hidden" >
-                <a  href="/blog">Blog</a>
+              <a  href="/lagal/faq">FAQ</a>
   </li>
               <li className="md:flex hidden">              <a  href="/Contact">Contact</a>
   </li>
@@ -697,8 +697,11 @@ const PeaceMantra = () => {
         )}
       </div>
       <main className="shop_list" id="shop" data-scroll-container>
+      <div className="heightt">
+
+</div>
         <div className="content">
-          <div className="home">
+          {/* <div className="home">
             {isAboveShopVisible && (
               <motion.div
                 className="above_shop"
@@ -734,7 +737,7 @@ const PeaceMantra = () => {
                 </a>
               </motion.div>
             )}
-          </div>
+          </div> */}
 
           <motion.div
             // when scrolling change y from middle to initial

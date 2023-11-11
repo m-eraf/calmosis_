@@ -115,16 +115,17 @@ const PeaceMantra = () => {
   };
   
   const makePayment = async () => {
-    const stripe = await loadStripe("pk_live_51O96PTSChD17SEYNqVr4YlBhQTBBRLFlMtQTq3qI5aLYiu3dBXk9x4TFSAhSueiKBbwYaGRmZiDPkSSabtyufbiQ00nGso4JIS"); 
-      const body = {
+    const stripe = await loadStripe("pk_live_51O96PTSChD17SEYNqVr4YlBhQTBBRLFlMtQTq3qI5aLYiu3dBXk9x4TFSAhSueiKBbwYaGRmZiDPkSSabtyufbiQ00nGso4JIS");
+  
+    const body = {
       products: cartItems,
-      peace_img: peace_img, 
+      peace_img: peace_img,
       user: auth?.user?._id,
-      username:auth?.user?.name,
+      username: auth?.user?.name,
       number: auth?.user?.phoneNumber,
-      email: "mohderaf5@gmail.com"
+      email: "mohderaf5@gmail.com",
     };
-
+  
     const headers = {
       "Content-Type": "application/json",
     };
@@ -136,15 +137,19 @@ const PeaceMantra = () => {
     });
   
     const session = await response.json();
-    // Redirect to the Stripe Checkout pa
+  
+    // Redirect to the Stripe Checkout page
     const result = await stripe.redirectToCheckout({
       sessionId: session.id,
+      successUrl: 'https://calmosiss.onrender.com/success?session_id={CHECKOUT_SESSION_ID}&payment_success=true', // Add payment_success parameter
+      cancelUrl: 'https://calmosiss.onrender.com/cancel?session_id={CHECKOUT_SESSION_ID}',
     });
   
     if (result.error) {
       console.error(result.error);
     }
   };
+  
   
   const increaseQuantity = (itemId, currentQuantity) => {
     // Calculate the new quantity
@@ -253,15 +258,11 @@ const PeaceMantra = () => {
         },
         body: JSON.stringify(newAddress),
       });
-
       if (response.status === 201) {
         // Address created successfully
         console.log('Address created successfully');
         fetchAddresses();
         setIsOverlay(false);
-
-
-
       } else {
         console.error('Failed to create an address');
       }

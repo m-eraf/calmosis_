@@ -1,7 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
 
-footer {
+/* Add this CSS to your styles or in a separate stylesheet */
 
+.otp-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.otp-input {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid white;
+  background-color:  #466f44;
+}
+
+
+footer {
+  height: 100%;
   position: relative;
   p {
     font-family: "Numans", sans-serif;
@@ -114,7 +131,6 @@ footer {
 .policy{
   position: relative;
 margin-bottom: 53px;
-
 @media (max-width:768px) {
   margin-bottom: 33px;
 

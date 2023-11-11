@@ -56,8 +56,7 @@ const Menu = ({ open }) => {
         
         About Us
       </a>
-      <a href="/blog">
-        Blog      </a>
+      <a  href="/lagal/faq">FAQ</a>
       <a href="/contact">
         
 Contact      </a>

@@ -6,7 +6,6 @@ const About = () => {
     return (
         <main className='about'>
             <Navbar />
-
             <img src="flower_about.png" className='bg-flower' alt="" />
             <div className="content">
                 <div className="two md:flex row sm:pb-16 xs:pb-8 pb-12">
@@ -15,7 +14,7 @@ const About = () => {
                         <p>Hey there, cherished customers! At Calmosis, we warmly welcome you to a world of tranquil well-being and natural healing. Discover the serenity of our "Make in India" products, thoughtfully crafted with the highest quality to soothe stress, promote restful sleep, and provide gentle pain relief. Embrace the transformative power of Ayurveda and hemp, and embark on a journey of holistic wellness with us. Thank you for being a part of our calming oasis; we're excited to have you on board! 🌿✨</p>
                     </div>
                     <div className="image">
-                        <img className='w-[300vh]' src="./about.png" alt="" />
+                        <img className='w-[300vh]' src="./abouy.jpg" alt="" />
                     </div>
                 </div>
 
@@ -45,7 +44,7 @@ const About = () => {
                         <p>"Our mission is to inspire a worldwide shift from allopathy to Ayurveda, embracing its inherent natural approach. Through pioneering research and development, we seek to nurture holistic well-being, empower Indian farmers, and cultivate healthier, more balanced lives."</p>
                     </div>
                     <div className="image">
-                        <img className='w-[200vh]' src="./abouy.jpg" alt="" />
+                        <img className='w-[200vh]' src="./about.png" alt="" />
                     </div>
                 </div>
                 <div className="one">   

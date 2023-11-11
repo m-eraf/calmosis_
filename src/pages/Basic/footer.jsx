@@ -4,7 +4,7 @@ import {FaYoutube} from "react-icons/fa"
 import {FaFacebook} from "react-icons/fa"
 const Footer = () => {
   return (
-    <footer className="p-2" style={{ marginTop: "70px" }}>
+    <footer className="p-2" style={{ marginTop: "20px" }}>
       <p className="middle">
         All our products are recognized and approved by the state AYUSH
         Department, Madhya Pradesh.
@@ -38,7 +38,7 @@ const Footer = () => {
           <h3>Quick Contact</h3>
           <div className="">
             <p>calm@calmosis.com</p>
-            <p>Tel; +91-790-890=890</p>
+            <p>Tel; +91-790-890-890</p>
           </div>
         </div>
         <div className="address">
@@ -71,7 +71,7 @@ const Footer = () => {
             </li>
             <li>
               <p>
-                <a href="/blog">Blog</a>
+                {/* <a href="/blog">Blog</a> */}
               </p>
             </li>
           </ul>
@@ -120,7 +120,7 @@ const Footer = () => {
           <h3 className="leading-[1px]">Quick Contact</h3>
           <div className="">
             <p>calm@calmosis.com</p>
-            <p>Tel; +91-790-890=890</p>
+            <p>Tel; +91-790-890-890</p>
           </div>
         </div>
       </div>
@@ -129,13 +129,19 @@ const Footer = () => {
         <p className="md:flex  hidden">© 2023 by Calmosis.Vedic Private Limited. All Rights Reserved.</p>
         <ul className="flex socials ">
           <li>
+            <a href="https://www.facebook.com/profile.php?id=61552363868158">
             <FaFacebook/>
+            </a>
           </li>
           <li>
-            <FiInstagram/>
+            <a href="https://www.instagram.com/calmosis.official/">
+              <FiInstagram/>
+            </a>
+            
           </li>
           <li>
-            <FaYoutube/>
+            <a href="https://www.youtube.com/channel/UCjA4zYzm__jA_GiGMjZZsXA"><FaYoutube/></a>
+            
           </li>
           
         </ul>

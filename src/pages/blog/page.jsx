@@ -10,7 +10,7 @@ const Blog = () => {
       <div className="content">
         <h1>Blog</h1>
 
-        <div className="cards md:flex row">
+        {/* <div className="cards md:flex row">
           <div className="card max-w-[60vh]">
             <img src="https://dummyimage.com/900x700/fff/000" alt="" />
 
@@ -57,7 +57,7 @@ const Blog = () => {
               <p>Know More...</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="line" />

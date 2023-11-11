@@ -202,7 +202,7 @@ const Navbar = ({ isHome = false }) => {
                 </a>
 
               <li className="md:flex hidden" >
-                <a  href="/blog">Blog</a>
+                <a  href="/lagal/faq">FAQ</a>
   </li>
               <li className="md:flex hidden">              <a  href="/Contact">Contact</a>
   </li>
