@@ -328,14 +328,14 @@ export default function Landing() {
                           <img
                             src={peace_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
                           />
                         )}
-                        {item.name != "Peace Mantra" && Sleep_img && (
+                        {item.name !== "Peace Mantra" && Sleep_img && (
                           <img
                             src={Sleep_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
                           />
                         )}
                             </div>

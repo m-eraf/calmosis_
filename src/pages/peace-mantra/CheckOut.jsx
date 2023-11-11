@@ -288,8 +288,8 @@ const PeaceMantra = () => {
       <main className="shop_list " >
         <Navbar />
         <div className="content  ">
-          <div className="detailss sm:py-16 xs:py-8 py-12 sm:p-16 xs:p-8 px-6 py-12 md:max-w-[200vh] md:max-h-[100%] max-h-[100%] max-w-[200vh] flex justify-centre md:flex-row flex-col  sm:p-8 p-4"  >
-            <div className=" relative ">
+          <div className="detailss sm:py-16 xs:py-8 py-12 sm:p-16 xs:p-8 px-6 py-12 md:max-w-[200vh] md:max-h-[100%] max-h-[70%] max-w-[200vh] flex justify-centre md:flex-row flex-col  sm:p-8 p-4"  >
+            <div className=" relative max-md:top-[-4vh] ">
               {!auth?.user ? (
                 <>
                   <div className="empty">
@@ -309,22 +309,22 @@ const PeaceMantra = () => {
                       {cartItems.map((item) => {
                         return (
 <div
-  className={`relative ${cartItems.length === 1 ? 'centered-item' : ''} md:left-[65%] rightdetails md:w-[300px]  xl:w-[400px] lg:max-w-[400px] xl:max-w[300px] lg:h-[250px] max-h-[400px] max-w-[400px] flex text-center flex-col sm:p-10 p-4  relative`}
+  className={`relative ${cartItems.length === 1 ? 'centered-item' : ''} md:left-[65%] rightdetails md:w-[300px]  xl:w-[400px] lg:max-w-[400px] xl:max-w[300px] lg:h-[250px] max-h-[500px] max-w-[400px]  flex text-center flex-col sm:p-10 p-4  relative`}
   key={item.id}
 >
 <div className=" relative md:absolute rightdetailsss 	  ">
-                        {item.name === "Peace Mantra" && peace_img && (
+{item.name === "Peace Mantra" && peace_img && (
                           <img
                             src={peace_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
                           />
                         )}
-                        {item.name != "Peace Mantra" && Sleep_img && (
+                        {item.name !== "Peace Mantra" && Sleep_img && (
                           <img
                             src={Sleep_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
                           />
                         )}
                       </div>
@@ -353,7 +353,7 @@ const PeaceMantra = () => {
                 </>
               )}
             </div>
-            <div className="lg:max-w-[600px] lg:h-[600px] max-h-[500px] max-w-[400px] flex justify-end flex-col sm:p-8 p-4 rounded-[32px] border-[2px] border-[white] md:right-[10%] relative">
+            <div className="lg:max-w-[600px] lg:h-[600px] max-h-[600px] max-w-[400px] flex justify-end flex-col sm:p-8 p-4 rounded-[32px] border-[2px] border-[white] md:right-[10%] relative">
             <div className="center-itemss">
   {addresses.length > 0 ? (
     <>
@@ -453,7 +453,7 @@ const PeaceMantra = () => {
             <form onSubmit={handleSubmit}>
               <div className="input-flex">
                 <div className="form-control">
-                  <label htmlFor="name">Your Full Name *</label>
+                  <label htmlFor="name">Full Name *</label>
                   <input
                     type="text"
                     value={name}
@@ -523,7 +523,7 @@ const PeaceMantra = () => {
                   </div>
                 </div>
 
-                <div className="form-control">
+                <div className="form-control age">
                   <label htmlFor="age">Age *</label>
                   <input
                     type="text"

@@ -39,13 +39,15 @@ main.shop_list {
       z-index: 30;
       
       @media (max-width:768px) {
-        width: 30%;
-        left: 30%;
+        width: 70vh;
         height: 100%;
-        top: -5vh;
-        justify-content: center; 
-        align-items: center; 
-        flex-direction: column;
+        left: 10%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+      align-items: start;
+      justify-content: start;
       }
 
       h1 {
@@ -57,7 +59,6 @@ main.shop_list {
       }
 
       p {
-        font-size: 20px;
         font-weight: 500;
         font-family: "Numans", sans-serif;
 
@@ -251,7 +252,7 @@ main.shop_list {
 
   .desc {
     position: relative;
-    top: 2vh;
+    top: 5vh;
     margin: auto 100px;
     @media (max-width:768px) {
       margin: 0;  
@@ -271,12 +272,15 @@ main.shop_list {
     p {
       width: 80%;
       padding: 5vh;
-      font-size: 20px;
       display: flex;
       text-align: start;
       align-items: start;
       gap: 10px;
       flex-direction: column;
+      @include mobile{
+        width: 100%;
+
+      }
     }
 
     margin-bottom: 150px;
@@ -317,7 +321,6 @@ main.shop_list {
               width: 80%;
               padding: 5vh;
               margin-top: 20px;
-              font-size: 20px;
               display: flex;
               text-align: start;
               align-items: start;
@@ -325,6 +328,8 @@ main.shop_list {
               flex-direction: column;
               @media (max-width:768px) {
                 left: 50%;
+                width: 120%;
+
               transform: translateX(-50%);
                 
               }
@@ -434,6 +439,10 @@ main.shop_list {
       align-items: start;
       gap: 10px;
       flex-direction: column;
+      @media (max-width:768px) {
+        width: 100%;
+
+      }
     }
   }
 
@@ -497,6 +506,7 @@ margin: 0;
   font-family: "Numans", sans-serif;
   transition: all 0.3s ease-in-out;
 
+ 
   &.open {
     opacity: 1;
     visibility: visible;
@@ -522,13 +532,17 @@ margin: 0;
     height: 100vh;
     width: 100%;
     .left {
+
+      @include mobile{
+        height: 70vh;
+      width: 90%;
+      }
       .input-flex {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 5px;
       }
-
       .form-control {
         width: 100%;
         display: flex;
@@ -542,8 +556,9 @@ margin: 0;
 
         .coupon,
         input {
+         
           margin-top: 10px;
-          padding: 10px 20px;
+          padding: 10px 10px;
           width: 100%;
           outline: none;
           border: none;
@@ -551,13 +566,16 @@ margin: 0;
           border: 1px solid rgba($color: white, $alpha: 0.75);
           color: white;
           font-weight: 400;
-          font-size: 20px;
+          font-size: 15px;
           font-weight: 900;
           margin-bottom: 20px;
           color-scheme: dark;
           transition: all 0.3s ease-in-out;
 
           &::placeholder {
+            @include mobile{
+              font-size: 10px;
+            }
             color: white;
             opacity: 0.75;
             font-weight: 400;
@@ -581,7 +599,6 @@ margin: 0;
 
         &.gender {
           margin-top: 10px;
-
           input {
             // width: auto;
             padding: 0;
@@ -594,6 +611,10 @@ margin: 0;
             cursor: pointer;
             border-radius: 50%;
             outline: none;
+            @include mobile{
+              width: 15px;
+            height: 15px;
+            }
             &::before {
               content: "";
               display: block;

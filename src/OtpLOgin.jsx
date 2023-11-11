@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { firebase, auth } from './firebaseConfig';
 import { useAuth } from ".././src/context/auth";
 import axios from "axios";
-import { useNavigate, } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Layout from './components/Layout/Layout';
 
 const OtpLOgin = () => {
   // State variables
-  const [phoneNumber, setnumber] = useState("");
+  const [phoneNumber, setnumber] = useState("+91");
   const [otp, setotp] = useState('');
   const [show, setshow] = useState(false);
   const [final, setfinal] = useState('');
@@ -27,7 +27,6 @@ const OtpLOgin = () => {
     document.body.appendChild(script);
 
     return () => {
-      // Clean up the script when the component unmounts
       document.body.removeChild(script);
     };
   }, []);
@@ -35,20 +34,23 @@ const OtpLOgin = () => {
   const signin = async () => {
     if (phoneNumber === "" || phoneNumber.length < 10) return;
 
-    setLoading(true); // Set loading state to true when sending OTP
+    setLoading(true);
 
     let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     try {
+      // Extract the actual phone number without the +91 prefix
+      
       const result = await auth.signInWithPhoneNumber(phoneNumber, verify);
       setfinal(result);
-	  toast.success("Otp sent !", {
-		position: toast.POSITION.BOTTOM_RIGHT,
-		autoClose: 1000,
-		style: {
-		  background: 'black',
-		  color: 'white', 
-		},
-	  });      setshow(true);
+      toast.success("Otp sent !", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 1000,
+        style: {
+          background: 'black',
+          color: 'white', 
+        },
+      });
+      setshow(true);
     } catch (err) {
       alert(err);
       window.location.reload();
@@ -64,7 +66,7 @@ const OtpLOgin = () => {
       const res = await final.confirm(otp);
       const ress = await axios.post("https://calmosiss.onrender.com/verify", {
         otp,
-        phoneNumber,
+        phoneNumber: phoneNumber
       });
       if (ress && ress.data.success) {
         toast.success(ress.data && ress.data.message);
@@ -100,7 +102,7 @@ const OtpLOgin = () => {
       <main className='login items-center justify-center h-screen'>
         <div className='content'>
           <h2>Login</h2>
-          <p>Click to Login With Password<a href="/login">Log In</a></p>
+          <p>Click to Login With Password &nbsp;<a href="/login">Log In</a></p>
           <center>
             <div style={{ display: !show ? "block" : "none" }} className='inner '>
               <input
@@ -129,8 +131,7 @@ const OtpLOgin = () => {
           </center>
         </div>
       </main>
-	  <ToastContainer />
-
+      <ToastContainer />
     </Layout>
   );
 }

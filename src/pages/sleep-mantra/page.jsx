@@ -264,50 +264,50 @@ const SleepMantra = () => {
       });
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.scrollY;
+  //     if (scrollTop > 100) {
+  //       setScrolled(true);
+  //     } else {
+  //       setScrolled(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
-  const scrollToPosition = () => {
-    setActive("");
-    scrollTo(650, 1000);
-    // Scroll to position 650 with a duration of 1000ms (1 second)
-  };
+  // const scrollToPosition = () => {
+  //   setActive("");
+  //   scrollTo(650, 1000);
+  //   // Scroll to position 650 with a duration of 1000ms (1 second)
+  // };
 
-  const scrollTo = (to, duration) => {
-    const start = window.scrollY;
-    const change = to - start;
-    let currentTime = 0;
-    const increment = 20; // Adjust the animation smoothness
+  // const scrollTo = (to, duration) => {
+  //   const start = window.scrollY;
+  //   const change = to - start;
+  //   let currentTime = 0;
+  //   const increment = 20; // Adjust the animation smoothness
 
-    const animateScroll = () => {
-      currentTime += increment;
-      const val = easeInOutCubic(currentTime, start, change, duration);
-      window.scrollTo(0, val);
-      if (currentTime < duration) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
+  //   const animateScroll = () => {
+  //     currentTime += increment;
+  //     const val = easeInOutCubic(currentTime, start, change, duration);
+  //     window.scrollTo(0, val);
+  //     if (currentTime < duration) {
+  //       requestAnimationFrame(animateScroll);
+  //     }
+  //   };
 
-    animateScroll();
-  };
+  //   animateScroll();
+  // };
 
-  // Easing function for smooth animation (cubic ease-in-out)
-  const easeInOutCubic = (t, b, c, d) => {
-    if ((t /= d / 2) < 1) return (c / 2) * t * t * t + b;
-    return (c / 2) * ((t -= 2) * t * t + 2) + b;
-  };
+  // // Easing function for smooth animation (cubic ease-in-out)
+  // const easeInOutCubic = (t, b, c, d) => {
+  //   if ((t /= d / 2) < 1) return (c / 2) * t * t * t + b;
+  //   return (c / 2) * ((t -= 2) * t * t + 2) + b;
+  // };
 
   //   form
 
@@ -319,7 +319,6 @@ const SleepMantra = () => {
     // Start the animations
     groupControls.start({ y: -300, opacity: 1 });
     subtractControls.start({ y: 600, opacity: 1 });
-
     setTimeout(async () => {
       await groupControls.start({ opacity: 0, zIndex: -1 });
       await subtractControls.start({ opacity: 0, zIndex: -1 });
@@ -429,140 +428,130 @@ const SleepMantra = () => {
   }, []);
   return (
     <>
-      <div></div>
       <nav className="real md:h-[15vh] h-[10vh] md:z-1 z-200	">
-        <div className="left md:flex hidden">
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/shop">Shop</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-          </ul>
-        </div>
-        <div className="right  ">
-          <ul>
+          <div className="left md:flex hidden">
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/shop">Shop</a>
+              </li>
+              <li>
+                <a href="/about">About Us</a>
+              </li>
+            </ul>
+          </div>
+          <div className="right  ">
+            <ul>
             <div className="flex md:hidden" ref={node}>
-              <Burger open={open} setOpen={setOpen} />
-              <Menu open={open} setOpen={setOpen} />
-            </div>
-            <div className="flex right">
-              <ul>
-                <a href="/">
-                  <img
-                    className=" absolute w-[20vh] md:w-[30vh]  logo_image xl:left-[43%] lg:left-[40%] left-[50%] top-[-2vh] md:top-[0]"
-                    src="./white_name.svg"
-                    alt=""
-                  />
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
+        <div className="flex right">
+          <ul>
+          <a href="/">
+                <img className=" absolute max-w-[15vh] md:max-w-[40vh]  logo_image"   src="./white_name.svg" alt="" />  
                 </a>
 
-                <li className="md:flex hidden">
-                  <a href="/blog">Blog</a>
-                </li>
-                <li className="md:flex hidden">
-                  {" "}
-                  <a href="/Contact">Contact</a>
-                </li>
-              </ul>
-            </div>
-
-            {!auth?.user ? (
-              <>
-                <li className="nav-item ">
-                  <NavLink to="/login" className="nav-link">
-                    <RiUserAddLine />
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item dropdown">
-                  <div
-                    onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="nav-link dropdown-toggle"
-                    style={{ border: "none" }}
-                  >
-                    <LiaUserCheckSolid />
-                  </div>
-                  {showUserMenu && (
-                    <ul className="dropdown-menu row">
-                      <li>
-                        <NavLink
-                          to={`/dashboard/${
-                            auth?.user?.role === 1
-                              ? "admin"
-                              : auth?.user?.role === 2
-                              ? "doctor"
-                              : "user"
-                          }`}
-                          className="dropdown-item"
-                        >
-                          Dashboard
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={handleLogout}
-                          to="/login"
-                          className="dropdown-item"
-                        >
-                          Logout
-                        </NavLink>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-              </>
-            )}
-            <li
-              onClick={() => {
-                setIsCart(!isCart);
-                fetchCartItems();
-              }}
-            >
-              <div className="cart-icon">
-                <svg
-                  className="order"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
-                    stroke="#466F44"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
-                    stroke="#466F44"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M3 6H21"
-                    stroke="#466F44"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                {cartItems.length > 0 && (
-                  <div className="cart-item-count">{cartItems.length}</div>
-                )}
-              </div>
-            </li>
-          </ul>
+              <li className="md:flex hidden" >
+                <a  href="/blog">Blog</a>
+  </li>
+              <li className="md:flex hidden">              <a  href="/Contact">Contact</a>
+  </li>
+  </ul>
         </div>
-      </nav>
+            
+              {!auth?.user ? (
+                <>
+                  <li className="nav-item ">
+                    <NavLink to="/otplogin" className="nav-link">
+                      < RiUserAddLine/>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item dropdown">
+                    <div
+                      onClick={() => setShowUserMenu(!showUserMenu)}
+                      className="nav-link dropdown-toggle"
+                      style={{ border: "none" }}
+                    >
+                      <LiaUserCheckSolid/>
+                    </div>
+                    {showUserMenu && (
+                      <ul className="dropdown-menu row">
+                        <li>
+                          <NavLink
+                            to={`/dashboard/${
+                              auth?.user?.role === 1 ? "admin" :
+                              auth?.user?.role === 2 ? "doctor" : "user"                          }`}
+                            className="dropdown-item"
+                          >
+                            Dashboard
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            onClick={handleLogout}
+                            to="/otplogin"
+                            className="dropdown-item"
+                          >
+                            Logout
+                          </NavLink>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                </>
+              )}
+             <li
+  onClick={() => {
+    setIsCart(!isCart);
+    fetchCartItems(); 
+  }}
+>
+  <div className="cart-icon">
+    <svg
+      className="order"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
+        stroke="#466F44"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
+        stroke="#466F44"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 6H21"
+        stroke="#466F44"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    {cartItems.length > 0 && (
+      <div className="cart-item-count">{cartItems.length}</div>
+    )}
+  </div>
+</li>
+
+            </ul>
+          </div>
+        </nav>
 
       <div className={isCart ? "cart active" : "cart"}>
         <div className="top">
@@ -627,14 +616,14 @@ const SleepMantra = () => {
                           <img
                             src={peace_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
                           />
                         )}
-                        {item.name != "Peace Mantra" && Sleep_img && (
+                        {item.name !== "Peace Mantra" && Sleep_img && (
                           <img
                             src={Sleep_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
                           />
                         )}
                       </div>
@@ -709,7 +698,11 @@ const SleepMantra = () => {
           </>
         )}
       </div>
+      
       <main className="shop_list" id="shop" data-scroll-container>
+      <div className="heightt">
+
+</div>
         <div className="content">
           {/* <div className="home">
             {isAboveShopVisible && (
@@ -748,7 +741,7 @@ const SleepMantra = () => {
               // </motion.div>
             )}
           </div> */}
-
+         
           <motion.div
             // when scrolling change y from middle to initial
             initial={{ y: 100 }}
@@ -806,7 +799,7 @@ const SleepMantra = () => {
                   </div>
                 </div>
 
-                <div className="variants relative left-[-15vh]">
+                <div className="variants relative md:left-[-15vh]">
                   <p>Variant</p>
                   <div className="choose">
                  
@@ -944,7 +937,7 @@ const SleepMantra = () => {
             <div className="desc" id="desc-Sleep">
               <h1>Description</h1>
 
-              <p>
+              <p className="md:text-[20px] text-[17px]">
                 <span>
                   Presenting "Sleep Mantra," your Ayurvedic ally for a
                   revitalizing night's sleep! Expertly crafted, this elixir
@@ -971,7 +964,7 @@ const SleepMantra = () => {
                   <div className="left">
                     <h1>Benefits</h1>
 
-                    <p>
+                    <p className="md:text-[20px] text-[17px]">
                       Welcome to a realm where we're more than just a brand;
                       we're your partners in achieving a healthier, more
                       balanced life. Our journey is inspired by Naturopathy and

@@ -18,7 +18,7 @@ const Shop = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: delayConst }}
           >
-            <img src="./peace_shop.png" alt="" />
+            <img className="max-w-[300px] md:max-w-[500px]" src="./peace_shop.png" alt="" />
             <h3>Peace Mantra</h3>
             <p className="desc">Thoughtfully crafted by Calmosis,</p>
 
@@ -66,7 +66,7 @@ const Shop = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: delayConst, delay: delayConst + 0.5 }}
           >
-            <img src="./sleep_shop.png" alt="" />
+            <img className="max-w-[300px] md:max-w-[500px]" src="./sleep_shop.png" alt="" />
             <h3>Sleep Mantra</h3>
             <p className="desc">Thoughtfully crafted by Calmosis,</p>
 

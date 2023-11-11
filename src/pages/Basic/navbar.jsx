@@ -198,7 +198,7 @@ const Navbar = ({ isHome = false }) => {
         <div className="flex right">
           <ul>
           <a href="/">
-                <img className=" absolute w-[20vh] md:w-[30vh]  logo_image xl:left-[43%] lg:left-[40%] left-[50%] top-[-2vh] md:top-[0]"   src="./white_name.svg" alt="" />  
+                <img className=" absolute max-w-[15vh] md:max-w-[40vh]  logo_image"   src="./white_name.svg" alt="" />  
                 </a>
 
               <li className="md:flex hidden" >
@@ -212,7 +212,7 @@ const Navbar = ({ isHome = false }) => {
               {!auth?.user ? (
                 <>
                   <li className="nav-item ">
-                    <NavLink to="/login" className="nav-link">
+                    <NavLink to="/otplogin" className="nav-link">
                       < RiUserAddLine/>
                     </NavLink>
                   </li>
@@ -242,7 +242,7 @@ const Navbar = ({ isHome = false }) => {
                         <li>
                           <NavLink
                             onClick={handleLogout}
-                            to="/login"
+                            to="/otplogin"
                             className="dropdown-item"
                           >
                             Logout
@@ -361,14 +361,14 @@ const Navbar = ({ isHome = false }) => {
                           <img
                             src={peace_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
                           />
                         )}
-                        {item.name != "Peace Mantra" && Sleep_img && (
+                        {item.name !== "Peace Mantra" && Sleep_img && (
                           <img
                             src={Sleep_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
                           />
                         )}
                             </div>

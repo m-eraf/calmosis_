@@ -5,8 +5,6 @@ import { useAuth } from "../../context/auth";
 import Burger from "../Hero/BurgerMenu";
 import Menu from "../Hero/Menu";
 import { AiOutlineDelete } from "react-icons/ai";
-
-import { RiDeleteBin5Line } from "react-icons/ri";
 import { LiaUserCheckSolid } from "react-icons/lia";
 import { RiUserAddLine } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
@@ -80,7 +78,6 @@ const PeaceMantra = () => {
   const [isSubtractVisible, setIsSubtractVisible] = useState(false);
   const [loading, setLoading] = useState(false); // Initialize the loading state
 
-  const [totalPrice, setTotalPrice] = useState(); // Add total price state
   const [auth, setAuth] = useAuth();
 
   const imageRef = React.useRef(null);
@@ -430,138 +427,129 @@ const PeaceMantra = () => {
     <>
       <div></div>
       <nav className="real md:h-[15vh] h-[10vh] md:z-1 z-200	">
-        <div className="left md:flex hidden">
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/shop">Shop</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-          </ul>
-        </div>
-        <div className="right  ">
-          <ul>
+          <div className="left md:flex hidden">
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/shop">Shop</a>
+              </li>
+              <li>
+                <a href="/about">About Us</a>
+              </li>
+            </ul>
+          </div>
+          <div className="right  ">
+            <ul>
             <div className="flex md:hidden" ref={node}>
-              <Burger open={open} setOpen={setOpen} />
-              <Menu open={open} setOpen={setOpen} />
-            </div>
-            <div className="flex right">
-              <ul>
-                <a href="/">
-                  <img
-                    className=" absolute w-[20vh] md:w-[30vh]  logo_image xl:left-[43%] lg:left-[40%] left-[50%] top-[-2vh] md:top-[0]"
-                    src="./white_name.svg"
-                    alt=""
-                  />
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
+        <div className="flex right">
+          <ul>
+          <a href="/">
+                <img className=" absolute max-w-[15vh] md:max-w-[40vh]  logo_image"   src="./white_name.svg" alt="" />  
                 </a>
 
-                <li className="md:flex hidden">
-                  <a href="/blog">Blog</a>
-                </li>
-                <li className="md:flex hidden">
-                  {" "}
-                  <a href="/Contact">Contact</a>
-                </li>
-              </ul>
-            </div>
-
-            {!auth?.user ? (
-              <>
-                <li className="nav-item ">
-                  <NavLink to="/login" className="nav-link">
-                    <RiUserAddLine />
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item dropdown">
-                  <div
-                    onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="nav-link dropdown-toggle"
-                    style={{ border: "none" }}
-                  >
-                    <LiaUserCheckSolid />
-                  </div>
-                  {showUserMenu && (
-                    <ul className="dropdown-menu row">
-                      <li>
-                        <NavLink
-                          to={`/dashboard/${
-                            auth?.user?.role === 1
-                              ? "admin"
-                              : auth?.user?.role === 2
-                              ? "doctor"
-                              : "user"
-                          }`}
-                          className="dropdown-item"
-                        >
-                          Dashboard
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={handleLogout}
-                          to="/login"
-                          className="dropdown-item"
-                        >
-                          Logout
-                        </NavLink>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-              </>
-            )}
-            <li
-              onClick={() => {
-                setIsCart(!isCart);
-                fetchCartItems();
-              }}
-            >
-              <div className="cart-icon">
-                <svg
-                  className="order"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
-                    stroke="#466F44"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
-                    stroke="#466F44"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M3 6H21"
-                    stroke="#466F44"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                {cartItems.length > 0 && (
-                  <div className="cart-item-count">{cartItems.length}</div>
-                )}
-              </div>
-            </li>
-          </ul>
+              <li className="md:flex hidden" >
+                <a  href="/blog">Blog</a>
+  </li>
+              <li className="md:flex hidden">              <a  href="/Contact">Contact</a>
+  </li>
+  </ul>
         </div>
-      </nav>
+            
+              {!auth?.user ? (
+                <>
+                  <li className="nav-item ">
+                    <NavLink to="/otplogin" className="nav-link">
+                      < RiUserAddLine/>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item dropdown">
+                    <div
+                      onClick={() => setShowUserMenu(!showUserMenu)}
+                      className="nav-link dropdown-toggle"
+                      style={{ border: "none" }}
+                    >
+                      <LiaUserCheckSolid/>
+                    </div>
+                    {showUserMenu && (
+                      <ul className="dropdown-menu row">
+                        <li>
+                          <NavLink
+                            to={`/dashboard/${
+                              auth?.user?.role === 1 ? "admin" :
+                              auth?.user?.role === 2 ? "doctor" : "user"                          }`}
+                            className="dropdown-item"
+                          >
+                            Dashboard
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            onClick={handleLogout}
+                            to="/login"
+                            className="dropdown-item"
+                          >
+                            Logout
+                          </NavLink>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                </>
+              )}
+             <li
+  onClick={() => {
+    setIsCart(!isCart);
+    fetchCartItems(); 
+  }}
+>
+  <div className="cart-icon">
+    <svg
+      className="order"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
+        stroke="#466F44"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
+        stroke="#466F44"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 6H21"
+        stroke="#466F44"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    {cartItems.length > 0 && (
+      <div className="cart-item-count">{cartItems.length}</div>
+    )}
+  </div>
+</li>
+
+            </ul>
+          </div>
+        </nav>
 
       <div className={isCart ? "cart active" : "cart"}>
         <div className="top">
@@ -626,14 +614,14 @@ const PeaceMantra = () => {
                           <img
                             src={peace_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
                           />
                         )}
-                        {item.name != "Peace Mantra" && Sleep_img && (
+                        {item.name !== "Peace Mantra" && Sleep_img && (
                           <img
                             src={Sleep_img}
                             alt=""
-                            className="md:w-[80px] w-[40px] md:h-[130px] h-[50px]"
+                            className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
                           />
                         )}
                       </div>
@@ -803,7 +791,7 @@ const PeaceMantra = () => {
                   </div>
                 </div>
 
-                <div className=" variants relative left-[-15vh]">
+                <div className=" variants relative md:left-[-15vh]">
                   <p>Variant</p>
                   <div className="choose">
                     <span
@@ -858,15 +846,7 @@ const PeaceMantra = () => {
                   One-time purchase: ₹4500
                 </span>
 
-                <span
-                  onClick={() => {
-                    setIsOneTime(false);
-                    setIsSubscription(true);
-                  }}
-                  className={isSubscription ? "selected" : ""}
-                >
-                  every month untill cancel
-                </span>
+               
               </div>
 
               <div className="btns one">
