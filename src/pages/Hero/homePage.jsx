@@ -1,4 +1,3 @@
- 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -37,11 +36,11 @@ const HomePage = () => {
         <img className="bg md:flex hidden home_image" src="blend_bg.png" alt="" />
       </div> */}
       <p className="text-centre text-center justify-center items-center centre sm:text-[30px] text-[16px] sm:p-16 xs:p-8 px-6 py-12" >
-        Experience the epitome of trust with our THC and CBD 
+        Experience the epitome of trust with our THC and CBD
         full-spectrum products, perfectly tailored to enhance your lifestyle.
       </p>
       <div className="divider md:flex row ">
-      <motion.div
+        <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{
             opacity: 1,
@@ -69,8 +68,8 @@ const HomePage = () => {
         >
           <h1 className="text-[25px] lg:text-[50px] xl:text-[55px] text-start justify-center ">Peace Mantra</h1>
           <p className="text-[15px] md:text-[20px] text-start  w-[42vh] sm:w-full">
-          Introducing "Peace Mantra," our remarkable product that reflects our unwavering dedication to holistic well-being. But that's not all. "Peace Mantra" is a versatile elixir renowned for improving sleep quality enhancing cognitive function,and promoting sexual wellness, amongst other health benefits.
- <br />
+            Introducing "Peace Mantra," our remarkable product that reflects our unwavering dedication to holistic well-being. But that's not all. "Peace Mantra" is a versatile elixir renowned for improving sleep quality enhancing cognitive function,and promoting sexual wellness, amongst other health benefits.
+            <br />
             <a href="#">Know More</a>
           </p>
 
@@ -104,7 +103,7 @@ const HomePage = () => {
       </div>
 
       <div className="divider divider md:flex row left">
-      <motion.div
+        <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{
             opacity: 1,
@@ -113,7 +112,7 @@ const HomePage = () => {
               duration: 1,
               ease: "easeInOut",
             },
-          }}  
+          }}
           className="image flex  md:hidden home_image"
         >
           <img src="./home_two_right.png" alt="" />
@@ -132,8 +131,8 @@ const HomePage = () => {
         >
           <h1 className="text-[25px] lg:text-[50px] xl:text-[55px] text-start justify-center  ">Sleep Mantra</h1>
           <p className="text-[15px] md:text-[20px] text-start   w-[42vh] sm:w-full">
-          Introducing Sleep Mantra - your Ayurvedic ally for a revitalizing night's sleep! Our expertly crafted elixir synchronizes with your Endocannabinoid System (ECS) to ensure you awaken refreshed and prepared for a new day. Quality sleep is essential for a well-rested and vibrant life, and "Sleep Mantra" is your guide to achieving Ayurvedic well-being.
- <br />
+            Introducing Sleep Mantra - your Ayurvedic ally for a revitalizing night's sleep! Our expertly crafted elixir synchronizes with your Endocannabinoid System (ECS) to ensure you awaken refreshed and prepared for a new day. Quality sleep is essential for a well-rested and vibrant life, and "Sleep Mantra" is your guide to achieving Ayurvedic well-being.
+            <br />
             <a href="#">Know More</a>{" "}
           </p>
 
@@ -174,7 +173,7 @@ const HomePage = () => {
               duration: 1,
               ease: "easeInOut",
             },
-          }}  
+          }}
           className="image md:flex hidden home_image"
         >
           <img src="./home_two_right.png" alt="" />
@@ -182,7 +181,7 @@ const HomePage = () => {
       </div>
       <div style={{ marginTop: "70px" }}>
         <p className="heading text-[30px] sm:text-[70px] sm:p-16 xs:p-8 px-6 py-12">
-         <span className="text-yellow-400	">Free!</span>  Ayurvedic Doctor Consultation for Your Hemp Journey
+          <span className="text-yellow-400	">Free!</span>  Ayurvedic Doctor Consultation for Your Hemp Journey
         </p>
 
         <motion.div
@@ -247,13 +246,13 @@ const HomePage = () => {
             }}
             className="flower w-[20vh] right-[-62px] sm:left-[160vh] sm:w-full top-[34vh] md:top-[0]"
           >
-            <img  src="./flower.png" alt="" />
+            <img src="./flower.png" alt="" />
           </motion.div>
-        </div>  
+        </div>
       </div>
 
       <div
-        style={{ marginTop: "100px", marginBottom: "20px" }}
+        style={{ marginTop: "100px", marginBottom: "200px" }}
         className="testimonial "
       >
         <p className="heading relative  text-[30px] md:text-[60px]  " style={{ fontWeight: "bold" }}>
