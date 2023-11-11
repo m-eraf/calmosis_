@@ -93,7 +93,7 @@ const SleepMantra = () => {
   const [is10ml, setIs10ml] = useState(true);
   const [is30ml, setIs30ml] = useState(false);
 
-  const [quanity, setQuanity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const [, setScrolled] = useState(false);
 
   const [isOneTime, setIsOneTime] = useState(true);
@@ -347,7 +347,7 @@ const SleepMantra = () => {
       return;
     }
 
-    if (!flavour || !variant || !quanity) {
+    if (!flavour || !variant || !quantity) {
       alert("Please fill all the fields");
       return;
     }
@@ -358,8 +358,8 @@ const SleepMantra = () => {
       flavour,
       user,
       variant,
-      quantity: quanity,
-      price: calculatePrice(flavour, variant, quanity),
+      quantity: quantity,
+      price: calculatePrice(flavour, variant, quantity),
       isOneTime,
       isSubscription,
     };
@@ -485,7 +485,7 @@ const SleepMantra = () => {
                       <li>
                         <NavLink
                           to={`/dashboard/${auth?.user?.role === 1 ? "admin" :
-                              auth?.user?.role === 2 ? "doctor" : "user"}`}
+                            auth?.user?.role === 2 ? "doctor" : "user"}`}
                           className="dropdown-item"
                         >
                           Dashboard
@@ -815,23 +815,23 @@ const SleepMantra = () => {
                 </div>
               </div>
 
-              <div className="quanity">
+              <div className="quantity">
                 <p>Quantity</p>
                 <div className="quan">
                   <span
                     onClick={() => {
-                      if (quanity > 1) {
-                        setQuanity(quanity - 1);
+                      if (quantity > 1) {
+                        setQuantity(quantity - 1);
                       }
                     }}
                   >
                     -
                   </span>
-                  <span>{quanity}</span>
+                  <span>{quantity}</span>
                   <span
                     onClick={() => {
-                      if (quanity < 99) {
-                        setQuanity(quanity + 1);
+                      if (quantity < 99) {
+                        setQuantity(quantity + 1);
                       }
                     }}
                   >
