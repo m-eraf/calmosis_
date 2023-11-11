@@ -115,41 +115,36 @@ const PeaceMantra = () => {
   };
   
   const makePayment = async () => {
-    const stripe = await loadStripe("pk_live_51O96PTSChD17SEYNqVr4YlBhQTBBRLFlMtQTq3qI5aLYiu3dBXk9x4TFSAhSueiKBbwYaGRmZiDPkSSabtyufbiQ00nGso4JIS");
-  
-    const body = {
+    const stripe = await loadStripe("pk_live_51O96PTSChD17SEYNqVr4YlBhQTBBRLFlMtQTq3qI5aLYiu3dBXk9x4TFSAhSueiKBbwYaGRmZiDPkSSabtyufbiQ00nGso4JIS"); 
+      const body = {
       products: cartItems,
-      peace_img: peace_img,
+      peace_img: peace_img, 
       user: auth?.user?._id,
-      username: auth?.user?.name,
+      username:auth?.user?.name,
       number: auth?.user?.phoneNumber,
-      email: "mohderaf5@gmail.com",
+      email: "auth?.user?.email"
     };
-  
+
     const headers = {
       "Content-Type": "application/json",
     };
   
-    const response = await fetch("https://calmosiss.onrender.com/api/create-checkout-session", {
+    const response = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
     });
   
     const session = await response.json();
-  
-    // Redirect to the Stripe Checkout page
+    // Redirect to the Stripe Checkout pa
     const result = await stripe.redirectToCheckout({
       sessionId: session.id,
-      successUrl: 'https://calmosiss.onrender.com/success?session_id={CHECKOUT_SESSION_ID}&payment_success=true', // Add payment_success parameter
-      cancelUrl: 'https://calmosiss.onrender.com/cancel?session_id={CHECKOUT_SESSION_ID}',
     });
   
     if (result.error) {
       console.error(result.error);
     }
   };
-  
   
   const increaseQuantity = (itemId, currentQuantity) => {
     // Calculate the new quantity
