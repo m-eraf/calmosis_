@@ -3,9 +3,9 @@ import Navbar from "../Basic/navbar";
 import React, { useState, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { useAuth } from "../../context/auth";
-import {loadStripe} from '@stripe/stripe-js';
-import {AiOutlineDelete} from "react-icons/ai"
-import {MdOutlineDeleteOutline} from "react-icons/md";
+import { loadStripe } from '@stripe/stripe-js';
+import { AiOutlineDelete } from "react-icons/ai"
+import { MdOutlineDeleteOutline } from "react-icons/md";
 const PeaceMantra = () => {
   const [isOverlay, setIsOverlay] = useState(false);
   const [auth, setAuth] = useAuth();
@@ -41,7 +41,7 @@ const PeaceMantra = () => {
   const [addresses, setAddresses] = useState([]);
   useEffect(() => {
     if (auth.user) {
-      fetch(`https://calmosiss.onrender.com/api/addresses?userId=${auth?.user?._id}`)
+      fetch(`/api/addresses?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setAddresses(data);
@@ -53,7 +53,7 @@ const PeaceMantra = () => {
   }, [auth?.user]);
   useEffect(() => {
     if (auth.user) {
-      fetch(`https://calmosiss.onrender.com/get-cart?userId=${auth?.user?._id}`)
+      fetch(`/get-cart?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setCartItems(data);
@@ -71,9 +71,9 @@ const PeaceMantra = () => {
 
   const handleDeleteCartItem = (itemId) => {
     // Make a DELETE request to the server to delete the cart item
-    fetch(`https://calmosiss.onrender.com/api/delete-cart-item/${itemId}`, {
+    fetch(`/api/delete-cart-item/${itemId}`, {
       method: 'DELETE',
-    })    
+    })
       .then((response) => {
         if (response.status === 204) {
           // Successful deletion on the server, now remove the item from your local state
@@ -99,9 +99,9 @@ const PeaceMantra = () => {
       // Handle the case when the user is not logged in
       return;
     }
-  
+
     // Make a DELETE request to delete all addresses associated with the user
-    fetch(`https://calmosiss.onrender.com/api/addresses/delete/${userId}`, {
+    fetch(`/api/addresses/delete/${userId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -113,10 +113,10 @@ const PeaceMantra = () => {
         console.error('Failed to delete addresses', error);
       });
   };
-  
+
   const makePayment = async () => {
-    const stripe = await loadStripe("pk_test_51O9B6xSFFEmFyF5DWu9zJHpIhBlZthgNtmFAxmyHYHZNzNRpEvaJbQoPQcyQGJL4IIIOaUWbZsxn2jQCc10O8oCG00gOQbImj1");
-  
+    const stripe = await loadStripe("pk_test_51O96PTSChD17SEYNRt8bNQrsGBpLidEP6fWBvVy6w91hUDUv50bGhUoa4m40Y5iW6aPjPYPpcPP54WIXr6lrB7B800ZifV3ZSB");
+
     // Check if there are existing addresses
     const selectedAddress = addresses.length > 0 ? addresses[0] : null;
 
@@ -129,47 +129,47 @@ const PeaceMantra = () => {
       email: auth?.user?.email,
       addresss: selectedAddress
         ? {
-            name: selectedAddress.name,
-            email: selectedAddress.email,
-            mobile: selectedAddress.mobile,
-            gender: selectedAddress.gender,
-            age: selectedAddress.age,
-            address: selectedAddress.address,
-            city: selectedAddress.city,
-            state: selectedAddress.state,
-            pincode: selectedAddress.pincode,
-          }
+          name: selectedAddress.name,
+          email: selectedAddress.email,
+          mobile: selectedAddress.mobile,
+          gender: selectedAddress.gender,
+          age: selectedAddress.age,
+          address: selectedAddress.address,
+          city: selectedAddress.city,
+          state: selectedAddress.state,
+          pincode: selectedAddress.pincode,
+        }
         : {
-            name,
-            email,
-            mobile,
-            gender,
-            age,
-            address,
-            city,
-            state,
-            pincode,
-          },
+          name,
+          email,
+          mobile,
+          gender,
+          age,
+          address,
+          city,
+          state,
+          pincode,
+        },
     };
-  
+
     const headers = {
       "Content-Type": "application/json",
     };
-  
+
     try {
       const response = await fetch("https://calmosiss.onrender.com/api/create-checkout-session", {
         method: "POST",
         headers: headers,
         body: JSON.stringify(body),
       });
-  
+
       const session = await response.json();
-  
+
       // Redirect to the Stripe Checkout page
       const result = await stripe.redirectToCheckout({
         sessionId: session.id,
       });
-  
+
       if (result.error) {
         console.error(result.error);
       }
@@ -177,12 +177,11 @@ const PeaceMantra = () => {
       console.error("Error:", error);
     }
   };
-  
-  
+
   const increaseQuantity = (itemId, currentQuantity) => {
     // Calculate the new quantity
     const newQuantity = currentQuantity + 1; // Calculate the new quantity as needed
-  
+
     // Update the cart items with the new quantity
     const updatedCart = cartItems.map((cartItem) => {
       if (cartItem._id === itemId) { // Use "_id" to compare with the item ID
@@ -190,12 +189,12 @@ const PeaceMantra = () => {
       }
       return cartItem;
     });
-  
+
     // Update the cart items in the state
     setCartItems(updatedCart);
-  
+
     // Send an API request to update the item's quantity in the database
-    fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
+    fetch(`/api/update-cart-item/${itemId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -214,12 +213,12 @@ const PeaceMantra = () => {
         console.error('Error:', error);
       });
   };
-  
+
   const decreaseQuantity = (itemId, currentQuantity) => {
     if (currentQuantity > 1) {
       // Calculate the new quantity
       const newQuantity = currentQuantity - 1; // Calculate the new quantity as needed
-  
+
       // Update the cart items with the new quantity
       const updatedCart = cartItems.map((cartItem) => {
         if (cartItem._id === itemId) { // Use "_id" to compare with the item ID
@@ -227,12 +226,12 @@ const PeaceMantra = () => {
         }
         return cartItem;
       });
-  
+
       // Update the cart items in the state
       setCartItems(updatedCart);
-  
+
       // Send an API request to update the item's quantity in the database
-      fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
+      fetch(`/api/update-cart-item/${itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -252,7 +251,7 @@ const PeaceMantra = () => {
         });
     }
   };
-  
+
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
@@ -279,7 +278,7 @@ const PeaceMantra = () => {
     };
 
     try {
-      const response = await fetch('https://calmosiss.onrender.com/api/addresses', {
+      const response = await fetch('/api/addresses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -301,7 +300,7 @@ const PeaceMantra = () => {
 
   const fetchAddresses = async () => {
     if (auth.user) {
-      fetch(`https://calmosiss.onrender.com/api/addresses?userId=${auth?.user?._id}`)
+      fetch(`/api/addresses?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setAddresses(data);
@@ -311,7 +310,7 @@ const PeaceMantra = () => {
         });
     }
   };
- 
+
   return (
     <>
       <main className="shop_list " >
@@ -337,42 +336,42 @@ const PeaceMantra = () => {
                     <div className="cards ">
                       {cartItems.map((item) => {
                         return (
-<div
-  className={`relative ${cartItems.length === 1 ? 'centered-item' : ''} md:left-[65%] rightdetails md:w-[300px]  xl:w-[400px] lg:max-w-[400px] xl:max-w[300px] lg:h-[250px] max-h-[500px] max-w-[400px]  flex text-center flex-col sm:p-10 p-4  relative`}
-  key={item.id}
->
-<div className=" relative md:absolute rightdetailsss 	  ">
-{item.name === "Peace Mantra" && peace_img && (
-                          <img
-                            src={peace_img}
-                            alt=""
-                            className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
-                          />
-                        )}
-                        {item.name !== "Peace Mantra" && Sleep_img && (
-                          <img
-                            src={Sleep_img}
-                            alt=""
-                            className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
-                          />
-                        )}
-                      </div>
+                          <div
+                            className={`relative ${cartItems.length === 1 ? 'centered-item' : ''} md:left-[65%] rightdetails md:w-[300px]  xl:w-[400px] lg:max-w-[400px] xl:max-w[300px] lg:h-[250px] max-h-[500px] max-w-[400px]  flex text-center flex-col sm:p-10 p-4  relative`}
+                            key={item.id}
+                          >
+                            <div className=" relative md:absolute rightdetailsss 	  ">
+                              {item.name === "Peace Mantra" && peace_img && (
+                                <img
+                                  src={peace_img}
+                                  alt=""
+                                  className="md:w-[140px] w-[60px] md:h-[150px] h-[50px]"
+                                />
+                              )}
+                              {item.name !== "Peace Mantra" && Sleep_img && (
+                                <img
+                                  src={Sleep_img}
+                                  alt=""
+                                  className="md:w-[140px] w-[60px] md:h-[140px] h-[50px]"
+                                />
+                              )}
+                            </div>
                             <div className="middle">
-                            <h2 className="md:text-[25px] text-[15px]">{item.name}</h2>
+                              <h2 className="md:text-[25px] text-[15px]">{item.name}</h2>
                               <p className="md:text-[20px] text-[10px]" >
                                 {item.flavour} - {item.variant}
                               </p>
                               <div className="p-2">
-                                <button  className="" onClick={() => decreaseQuantity(item._id, item.quantity)} >-</button> &nbsp;&nbsp;|&nbsp;&nbsp;
-                              <span>{item.quantity}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <button className="" onClick={() => increaseQuantity(item._id, item.quantity)} >+</button>
+                                <button className="" onClick={() => decreaseQuantity(item._id, item.quantity)} >-</button> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>{item.quantity}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <button className="" onClick={() => increaseQuantity(item._id, item.quantity)} >+</button>
                               </div>
                               <p>{item.price}</p>
 
                             </div>
                             <div className="right md:right-[1vh] right-[5vh] md:top-[14vh] xl:top-[10vh] top-[8vh] md:text-[30px] text-[20px] items-end absolute  ">
-                            <button onClick={() => handleDeleteCartItem(item._id)}>
-<AiOutlineDelete/>        </button>
+                              <button onClick={() => handleDeleteCartItem(item._id)}>
+                                <AiOutlineDelete />        </button>
                             </div>
                           </div>
                         );
@@ -383,83 +382,83 @@ const PeaceMantra = () => {
               )}
             </div>
             <div className="lg:max-w-[600px] lg:h-[600px] max-h-[600px] max-w-[400px] flex justify-end flex-col sm:p-8 p-4 rounded-[32px] border-[2px] border-[white] md:right-[10%] relative">
-            <div className="center-itemss">
-  {addresses.length > 0 ? (
-    <>
-      <a className="btn top-[5vh] text-[20px] right-[5vh] pointerr absolute" onClick={handleDeleteAllAddresses}>
-        <AiOutlineDelete onClick={handleDeleteAllAddresses} />
-      </a>
-    </>
-  ) : (
-    <div></div>
-  )}
+              <div className="center-itemss">
+                {addresses.length > 0 ? (
+                  <>
+                    <a className="btn top-[5vh] text-[20px] right-[5vh] pointerr absolute" onClick={handleDeleteAllAddresses}>
+                      <AiOutlineDelete onClick={handleDeleteAllAddresses} />
+                    </a>
+                  </>
+                ) : (
+                  <div></div>
+                )}
 
-  {addresses.map((address) => (
-    <p className="addres center-itemsss" key={address._id}>
-      Delivery Address: <br /> {address.name}, <br /> {address.mobile}, <br /> {address.address}, {address.city}, {address.state}, {address.pincode}
-    </p>
-  ))}
+                {addresses.map((address) => (
+                  <p className="addres center-itemsss" key={address._id}>
+                    Delivery Address: <br /> {address.name}, <br /> {address.mobile}, <br /> {address.address}, {address.city}, {address.state}, {address.pincode}
+                  </p>
+                ))}
 
 
-    <table className="modern-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        {cartItems.map((item) => (
-          <tr key={item.id}>
-            <td>{item.name}</td>
-            <td>{item.price}</td>
-          </tr>
-        ))}
-        <tr>
-          <td>Doctor's consultation</td>
-          <td>-₹500</td>
-        </tr>
-        <tr>
-          <td>Order Total</td>
-          <td>₹{calculateTotalPrice()}</td>
-        </tr>
-      </tbody>
-    </table>
+                <table className="modern-table">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartItems.map((item) => (
+                      <tr key={item.id}>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                      </tr>
+                    ))}
+                    <tr>
+                      <td>Doctor's consultation</td>
+                      <td>-₹500</td>
+                    </tr>
+                    <tr>
+                      <td>Order Total</td>
+                      <td>₹{calculateTotalPrice()}</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-   
 
-    <div className="full-width"></div>
-    {addresses.length > 0 ? (
-    <>
-      <div className="btn" onClick={makePayment}>
-        <a >
-          <span>Proceed to Payment</span>
-          <svg width="58" height="46" viewBox="0 0 58 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1.5" y="1.5" width="55" height="43" fill="#F2D101" stroke="#F2D101" strokeWidth="3" />
-            <path
-              d="M16 21.5C15.1716 21.5 14.5 22.1716 14.5 23C14.5 23.8284 15.1716 24.5 16 24.5V21.5ZM42.0607 24.0607C42.6464 23.4749 42.6464 22.5251 42.0607 21.9393L32.5147 12.3934C31.9289 11.8076 30.9792 11.8076 30.3934 12.3934C29.8076 12.9792 29.8076 13.9289 30.3934 14.5147L38.8787 23L30.3934 31.4853C29.8076 32.0711 29.8076 33.0208 30.3934 33.6066C30.9792 34.1924 31.9289 34.1924 32.5147 33.6066L42.0607 24.0607ZM16 24.5L41 24.5V21.5L16 21.5V24.5Z"
-              fill="#466F44"
-            />
-          </svg>
-        </a>
-      </div>
-    </>
-  ) : (
-      <div className="btn" onClick={() => setIsOverlay(true)}>
-        <a href="#">
-          <span>Add Address</span>
-          <svg width="58" height="46" viewBox="0 0 58 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1.5" y="1.5" width="55" height="43" fill="#F2D101" stroke="#F2D101" strokeWidth="3" />
-            <path
-              d="M16 21.5C15.1716 21.5 14.5 22.1716 14.5 23C14.5 23.8284 15.1716 24.5 16 24.5V21.5ZM42.0607 24.0607C42.6464 23.4749 42.6464 22.5251 42.0607 21.9393L32.5147 12.3934C31.9289 11.8076 30.9792 11.8076 30.3934 12.3934C29.8076 12.9792 29.8076 13.9289 30.3934 14.5147L38.8787 23L30.3934 31.4853C29.8076 32.0711 29.8076 33.0208 30.3934 33.6066C30.9792 34.1924 31.9289 34.1924 32.5147 33.6066L42.0607 24.0607ZM16 24.5L41 24.5V21.5L16 21.5V24.5Z"
-              fill="#466F44"
-            />
-          </svg>
-        </a>
-      </div>
-    )}
-  </div>
-</div>
+
+                <div className="full-width"></div>
+                {addresses.length > 0 ? (
+                  <>
+                    <div className="btn" onClick={makePayment}>
+                      <a>
+                        <span>Proceed to Payment</span>
+                        <svg width="58" height="46" viewBox="0 0 58 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="1.5" y="1.5" width="55" height="43" fill="#F2D101" stroke="#F2D101" strokeWidth="3" />
+                          <path
+                            d="M16 21.5C15.1716 21.5 14.5 22.1716 14.5 23C14.5 23.8284 15.1716 24.5 16 24.5V21.5ZM42.0607 24.0607C42.6464 23.4749 42.6464 22.5251 42.0607 21.9393L32.5147 12.3934C31.9289 11.8076 30.9792 11.8076 30.3934 12.3934C29.8076 12.9792 29.8076 13.9289 30.3934 14.5147L38.8787 23L30.3934 31.4853C29.8076 32.0711 29.8076 33.0208 30.3934 33.6066C30.9792 34.1924 31.9289 34.1924 32.5147 33.6066L42.0607 24.0607ZM16 24.5L41 24.5V21.5L16 21.5V24.5Z"
+                            fill="#466F44"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  <div className="btn" onClick={() => setIsOverlay(true)}>
+                    <a href="#">
+                      <span>Add Address</span>
+                      <svg width="58" height="46" viewBox="0 0 58 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1.5" y="1.5" width="55" height="43" fill="#F2D101" stroke="#F2D101" strokeWidth="3" />
+                        <path
+                          d="M16 21.5C15.1716 21.5 14.5 22.1716 14.5 23C14.5 23.8284 15.1716 24.5 16 24.5V21.5ZM42.0607 24.0607C42.6464 23.4749 42.6464 22.5251 42.0607 21.9393L32.5147 12.3934C31.9289 11.8076 30.9792 11.8076 30.3934 12.3934C29.8076 12.9792 29.8076 13.9289 30.3934 14.5147L38.8787 23L30.3934 31.4853C29.8076 32.0711 29.8076 33.0208 30.3934 33.6066C30.9792 34.1924 31.9289 34.1924 32.5147 33.6066L42.0607 24.0607ZM16 24.5L41 24.5V21.5L16 21.5V24.5Z"
+                          fill="#466F44"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
 
           </div>
         </div>

@@ -26,7 +26,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("https://calmosiss.onrender.com/api/v1/auth/register", {
+      const res = await axios.post("/api/v1/auth/register", {
         name,
         email,
         password,
@@ -34,7 +34,7 @@ const Register = () => {
       });
 
       if (res && res.data.success) {
-        await axios.post("https://calmosiss.onrender.com/email/welcome", { email });
+        await axios.post("/email/welcome", { email });
         toast.success(res.data && res.data.message);
         setAuth({
           ...auth,
@@ -54,77 +54,77 @@ const Register = () => {
 
   return (
     <Layout title="Register - Calmosis">
-          <main className='signup items-center justify-center h-screen'>
+      <main className='signup items-center justify-center h-screen'>
 
-      <div className="content">
-        <form onSubmit={handleSubmit}>
-        <h2>Welcome to Calmosis</h2>          <p>
-          Already Have An Account? <a href="/login">Log In</a>
-        </p>
-       
-          <div className="inner d">
-          <label>Your Name</label>
+        <div className="content">
+          <form onSubmit={handleSubmit}>
+            <h2>Welcome to Calmosis</h2>          <p>
+              Already Have An Account? <a href="/login">Log In</a>
+            </p>
 
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Name"
-              required
-              autoFocus
-            />
-          </div>
-          <div className="inner">
-            <label>Your Email</label>
-            
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Email "
-              required
-            />
-          </div>
-          <div className="inner">
-            <label>Enter Your Pasword</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Enter Your Password"
-              required
-            />
-          </div>
+            <div className="inner d">
+              <label>Your Name</label>
 
-          <div className="inner">
-          <label>Your Mobile</label>
-
-            <input
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhone(e.target.value)}
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Same otp Phone"
-              disabled
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="form-control"
+                id="exampleInputEmail1"
+                placeholder="Enter Your Name"
+                required
+                autoFocus
               />
-          </div>
-         
-          <button
+            </div>
+            <div className="inner">
+              <label>Your Email</label>
+
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-control"
+                id="exampleInputEmail1"
+                placeholder="Enter Your Email "
+                required
+              />
+            </div>
+            <div className="inner">
+              <label>Enter Your Pasword</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control"
+                id="exampleInputPassword1"
+                placeholder="Enter Your Password"
+                required
+              />
+            </div>
+
+            <div className="inner">
+              <label>Your Mobile</label>
+
+              <input
+                type="text"
+                value={phoneNumber}
+                onChange={(e) => setPhone(e.target.value)}
+                className="form-control"
+                id="exampleInputEmail1"
+                placeholder="Enter Same otp Phone"
+                disabled
+              />
+            </div>
+
+            <button
               type="submit"
               className="btn btn-primary buttonn"
               disabled={loading} // Disable the button when in the loading state
             >
               {loading ? "Registering..." : "REGISTER"}
             </button>
-        </form>
-      </div>
+          </form>
+        </div>
       </main>
 
     </Layout>

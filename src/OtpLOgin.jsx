@@ -39,7 +39,7 @@ const OtpLOgin = () => {
     let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     try {
       // Extract the actual phone number without the +91 prefix
-      
+
       const result = await auth.signInWithPhoneNumber(phoneNumber, verify);
       setfinal(result);
       toast.success("Otp sent !", {
@@ -47,7 +47,7 @@ const OtpLOgin = () => {
         autoClose: 1000,
         style: {
           background: 'black',
-          color: 'white', 
+          color: 'white',
         },
       });
       setshow(true);
@@ -63,26 +63,26 @@ const OtpLOgin = () => {
     const newOtp = [...otp];
     newOtp[index - 1] = e.target.value;
     setotp(newOtp.join(""));
-  
+
     if (e.target.value === "" && e.keyCode === 8 && index > 1) {
       document.getElementById(`otp-input-${index - 1}`).focus();
     }
-  
+
     if (index < 6 && e.target.value !== "") {
       document.getElementById(`otp-input-${index + 1}`).focus();
     }
   };
-  
-  
-  
-  
+
+
+
+
 
   const ValidateOtp = async () => {
     setLoading(true); // Set loading state to true when validating OTP
 
     try {
       const res = await final.confirm(otp);
-      const ress = await axios.post("https://calmosiss.onrender.com/verify", {
+      const ress = await axios.post("/verify", {
         otp,
         phoneNumber: phoneNumber
       });
@@ -140,24 +140,24 @@ const OtpLOgin = () => {
               </button>
             </div>
             <div style={{ display: show ? "block" : "none" }}>
-  <div className="otp-input-container">
-    {[1, 2, 3, 4, 5, 6].map((index) => (
-      <input
-        key={index}
-        type="text"
-        maxLength="1"
-        className="otp-input"
-        value={otp[index - 1] || ""}
-        onChange={(e) => handleOtpChange(e, index)}
-        id={`otp-input-${index}`} 
-      />
-    ))}
-  </div>
-  <br /><br />
-  <button className=" buttonn btn btn-primary" onClick={ValidateOtp} disabled={loading}>
-    {loading ? "Verifying..." : "Verify"}
-  </button>
-</div>
+              <div className="otp-input-container">
+                {[1, 2, 3, 4, 5, 6].map((index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    maxLength="1"
+                    className="otp-input"
+                    value={otp[index - 1] || ""}
+                    onChange={(e) => handleOtpChange(e, index)}
+                    id={`otp-input-${index}`}
+                  />
+                ))}
+              </div>
+              <br /><br />
+              <button className=" buttonn btn btn-primary" onClick={ValidateOtp} disabled={loading}>
+                {loading ? "Verifying..." : "Verify"}
+              </button>
+            </div>
 
           </center>
         </div>

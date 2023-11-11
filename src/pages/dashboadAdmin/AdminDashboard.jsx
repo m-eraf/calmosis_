@@ -1,4 +1,4 @@
- 
+
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/auth";
 import DashNav from "../../components/Layout/dash-nav";
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put("https://calmosiss.onrender.com/api/v1/auth/profile", {
+      const { data } = await axios.put("/api/v1/auth/profile", {
         name,
         email,
         phoneNumber,
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
 
   return (
     <main className="dashboard account" data-scroll-container id="home">
-      <AdminMenu/>
+      <AdminMenu />
       <div class="mainbar">
         <DashNav />
 
@@ -68,10 +68,10 @@ const AdminDashboard = () => {
             <div className="top-left">
               <span>
                 <h2 >Hello <span className="capital">{auth?.user?.name}
-                  </span></h2>
+                </span></h2>
                 <p>You can edit your personal info below.</p>
               </span>
-              
+
             </div>
           </div>
 
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
                     placeholder="Email ID"
                     disabled
                   />
-                                  <p>Your Login email can’t be changed</p>
+                  <p>Your Login email can’t be changed</p>
 
                 </div>
               </div>
@@ -105,24 +105,24 @@ const AdminDashboard = () => {
               <div className="form-control">
                 <label htmlFor="name">Mobile *</label>
                 <input
-                    type="text"
-                    value={auth.user?.phoneNumber}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    disabled                  />
+                  type="text"
+                  value={auth.user?.phoneNumber}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  disabled />
               </div>
               <div className="mb-3">
-              <label htmlFor="name">Address *</label>
-                  <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    placeholder="Enter Your Address"
-                  />
-                </div>
+                <label htmlFor="name">Address *</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="Enter Your Address"
+                />
+              </div>
             </form>
           </div>
 

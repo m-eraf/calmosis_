@@ -126,7 +126,7 @@ const SleepMantra = () => {
     setCartItems(updatedCart);
 
     // Send an API request to update the item's quantity in the database
-    fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
+    fetch(`/api/update-cart-item/${itemId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -164,7 +164,7 @@ const SleepMantra = () => {
       setCartItems(updatedCart);
 
       // Send an API request to update the item's quantity in the database
-      fetch(`https://calmosiss.onrender.com/api/update-cart-item/${itemId}`, {
+      fetch(`/api/update-cart-item/${itemId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -194,7 +194,7 @@ const SleepMantra = () => {
 
   const fetchCartItems = () => {
     if (auth.user) {
-      fetch(`https://calmosiss.onrender.com/get-cart?userId=${auth?.user?._id}`)
+      fetch(`/get-cart?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setCartItems(data);
@@ -214,7 +214,7 @@ const SleepMantra = () => {
     // Check if the user is logged in
     if (auth.user) {
       // Make an API request to fetch the cart data for the logged-in user
-      fetch(`https://calmosiss.onrender.com/get-cart?userId=${auth?.user?._id}`)
+      fetch(`/get-cart?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           // Update the cartItems state with the received data
@@ -245,7 +245,7 @@ const SleepMantra = () => {
 
   const handleDeleteCartItem = (itemId) => {
     // Make a DELETE request to the server to delete the cart item
-    fetch(`https://calmosiss.onrender.com/api/delete-cart-item/${itemId}`, {
+    fetch(`/api/delete-cart-item/${itemId}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -365,7 +365,7 @@ const SleepMantra = () => {
     };
 
     try {
-      const response = await fetch("https://calmosiss.onrender.com/api/add-to-cart", {
+      const response = await fetch("/api/add-to-cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -429,129 +429,128 @@ const SleepMantra = () => {
   return (
     <>
       <nav className="real md:h-[15vh] h-[10vh] md:z-1 z-200	">
-          <div className="left md:flex hidden">
-            <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/shop">Shop</a>
-              </li>
-              <li>
-                <a href="/about">About Us</a>
-              </li>
-            </ul>
-          </div>
-          <div className="right  ">
-            <ul>
-            <div className="flex md:hidden" ref={node}>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
-        </div>
-        <div className="flex right">
+        <div className="left md:flex hidden">
           <ul>
-          <a href="/">
-                <img className=" absolute max-w-[15vh] md:max-w-[40vh]  logo_image"   src="./white_name.svg" alt="" />  
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/shop">Shop</a>
+            </li>
+            <li>
+              <a href="/about">About Us</a>
+            </li>
+          </ul>
+        </div>
+        <div className="right  ">
+          <ul>
+            <div className="flex md:hidden" ref={node}>
+              <Burger open={open} setOpen={setOpen} />
+              <Menu open={open} setOpen={setOpen} />
+            </div>
+            <div className="flex right">
+              <ul>
+                <a href="/">
+                  <img className=" absolute max-w-[15vh] md:max-w-[40vh]  logo_image" src="./white_name.svg" alt="" />
                 </a>
 
-              <li className="md:flex hidden" >
-                <a  href="/blog">Blog</a>
-  </li>
-              <li className="md:flex hidden">              <a  href="/Contact">Contact</a>
-  </li>
-  </ul>
-        </div>
-            
-              {!auth?.user ? (
-                <>
-                  <li className="nav-item ">
-                    <NavLink to="/otplogin" className="nav-link">
-                      < RiUserAddLine/>
-                    </NavLink>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item dropdown">
-                    <div
-                      onClick={() => setShowUserMenu(!showUserMenu)}
-                      className="nav-link dropdown-toggle"
-                      style={{ border: "none" }}
-                    >
-                      <LiaUserCheckSolid/>
-                    </div>
-                    {showUserMenu && (
-                      <ul className="dropdown-menu row">
-                        <li>
-                          <NavLink
-                            to={`/dashboard/${
-                              auth?.user?.role === 1 ? "admin" :
-                              auth?.user?.role === 2 ? "doctor" : "user"                          }`}
-                            className="dropdown-item"
-                          >
-                            Dashboard
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            onClick={handleLogout}
-                            to="/otplogin"
-                            className="dropdown-item"
-                          >
-                            Logout
-                          </NavLink>
-                        </li>
-                      </ul>
-                    )}
-                  </li>
-                </>
-              )}
-             <li
-  onClick={() => {
-    setIsCart(!isCart);
-    fetchCartItems(); 
-  }}
->
-  <div className="cart-icon">
-    <svg
-      className="order"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
-        stroke="#466F44"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
-        stroke="#466F44"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M3 6H21"
-        stroke="#466F44"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-    {cartItems.length > 0 && (
-      <div className="cart-item-count">{cartItems.length}</div>
-    )}
-  </div>
-</li>
+                <li className="md:flex hidden" >
+                  <a href="/blog">Blog</a>
+                </li>
+                <li className="md:flex hidden">              <a href="/Contact">Contact</a>
+                </li>
+              </ul>
+            </div>
 
-            </ul>
-          </div>
-        </nav>
+            {!auth?.user ? (
+              <>
+                <li className="nav-item ">
+                  <NavLink to="/otplogin" className="nav-link">
+                    < RiUserAddLine />
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item dropdown">
+                  <div
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                    className="nav-link dropdown-toggle"
+                    style={{ border: "none" }}
+                  >
+                    <LiaUserCheckSolid />
+                  </div>
+                  {showUserMenu && (
+                    <ul className="dropdown-menu row">
+                      <li>
+                        <NavLink
+                          to={`/dashboard/${auth?.user?.role === 1 ? "admin" :
+                              auth?.user?.role === 2 ? "doctor" : "user"}`}
+                          className="dropdown-item"
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/otplogin"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+              </>
+            )}
+            <li
+              onClick={() => {
+                setIsCart(!isCart);
+                fetchCartItems();
+              }}
+            >
+              <div className="cart-icon">
+                <svg
+                  className="order"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
+                    stroke="#466F44"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
+                    stroke="#466F44"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M3 6H21"
+                    stroke="#466F44"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {cartItems.length > 0 && (
+                  <div className="cart-item-count">{cartItems.length}</div>
+                )}
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
 
       <div className={isCart ? "cart active" : "cart"}>
         <div className="top">
@@ -606,13 +605,12 @@ const SleepMantra = () => {
                 {cartItems.map((item) => {
                   return (
                     <div
-                      className={`relative ${
-                        cartItems.length === 1 ? "centered-item" : ""
-                      }  rightdetailss text-white lg:max-w-[400px] lg:h-[250px] max-h-[200px] max-w-[300px] flex text-center flex-col  relative`}
+                      className={`relative ${cartItems.length === 1 ? "centered-item" : ""
+                        }  rightdetailss text-white lg:max-w-[400px] lg:h-[250px] max-h-[200px] max-w-[300px] flex text-center flex-col  relative`}
                       key={item.id}
                     >
                       <div className=" relative md:absolute rightdetailsss 	  ">
-                      {item.name === "Peace Mantra" && peace_img && (
+                        {item.name === "Peace Mantra" && peace_img && (
                           <img
                             src={peace_img}
                             alt=""
@@ -698,11 +696,11 @@ const SleepMantra = () => {
           </>
         )}
       </div>
-      
-      <main className="shop_list" id="shop" data-scroll-container>
-      <div className="heightt">
 
-</div>
+      <main className="shop_list" id="shop" data-scroll-container>
+        <div className="heightt">
+
+        </div>
         <div className="content">
           {/* <div className="home">
             {isAboveShopVisible && (
@@ -741,7 +739,7 @@ const SleepMantra = () => {
               // </motion.div>
             )}
           </div> */}
-         
+
           <motion.div
             // when scrolling change y from middle to initial
             initial={{ y: 100 }}
@@ -777,7 +775,7 @@ const SleepMantra = () => {
                 </p>
               </div>
               <div className="price">
-              ₹4500 
+                ₹4500
               </div>
 
               <div className="row">
@@ -802,7 +800,7 @@ const SleepMantra = () => {
                 <div className="variants relative md:left-[-15vh]">
                   <p>Variant</p>
                   <div className="choose">
-                 
+
                     <span
                       onClick={() => {
                         setIs10ml(false);
@@ -853,7 +851,7 @@ const SleepMantra = () => {
                   One-time purchase: ₹4500
                 </span>
 
-              
+
               </div>
 
               <div className="btns one">

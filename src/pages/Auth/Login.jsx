@@ -17,9 +17,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Set loading state to true when submitting the form
-  
+
     try {
-      const res = await axios.post("https://calmosiss.onrender.com/api/v1/auth/login", {
+      const res = await axios.post("/api/v1/auth/login", {
         email,
         password,
       });
@@ -42,60 +42,60 @@ const Login = () => {
       setLoading(false); // Set loading state back to false when the API request is complete
     }
   };
-  
+
   return (
     <Layout title="Register - Calmosis">
-       <div className="h-[15vh]">
+      <div className="h-[15vh]">
 
-       </div>
-          <main className='login  items-center justify-center h-screen'>
-          
-      <div className="content">
-      <h2>Login</h2>
-     
-        <p>
-          Login with Otp <a href="/otplogin"> Log In</a>
-        </p>
-        <form onSubmit={handleSubmit}>
+      </div>
+      <main className='login  items-center justify-center h-screen'>
 
-          <div className="inner">
-          <label>Your Email</label>
+        <div className="content">
+          <h2>Login</h2>
 
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Email "
-              required
-            />
-          </div>
-          <div className="inner">
-          <label>Your Pasword</label>
+          <p>
+            Login with Otp <a href="/otplogin"> Log In</a>
+          </p>
+          <form onSubmit={handleSubmit}>
 
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Enter Your Password"
-              required
-            />
-          </div>
-         {/* <a  onClick={() => {
+            <div className="inner">
+              <label>Your Email</label>
+
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-control"
+                id="exampleInputEmail1"
+                placeholder="Enter Your Email "
+                required
+              />
+            </div>
+            <div className="inner">
+              <label>Your Pasword</label>
+
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control"
+                id="exampleInputPassword1"
+                placeholder="Enter Your Password"
+                required
+              />
+            </div>
+            {/* <a  onClick={() => {
                 navigate("/forgot-password");
               }}> Forget Password</a> */}
-<button
+            <button
               type="submit"
               className="btn btn-primary "
               disabled={loading} // Disable the button when in the loading state
             >
-  {loading ? <div className="simple-spinner"><span ></span></div>  : "LOGIN"}
+              {loading ? <div className="simple-spinner"><span ></span></div> : "LOGIN"}
             </button>
-        </form>
-      </div>
+          </form>
+        </div>
       </main>
 
     </Layout>

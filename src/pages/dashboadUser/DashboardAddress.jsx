@@ -11,7 +11,7 @@ const DashboardAddress = () => {
     // Check if the user is logged in
     if (auth.user) {
       // Make an API request to fetch the cart data for the logged-in user
-      fetch(`https://calmosiss.onrender.com/api/addresses?userId=${auth?.user?._id}`)
+      fetch(`/api/addresses?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           // Update the cartItems state with the received data
@@ -25,27 +25,27 @@ const DashboardAddress = () => {
 
   return (
     <main className="dashboard order" data-scroll-container id="home">
-      <UserMenu/>
+      <UserMenu />
       <div class="mainbar">
         <DashNav />
-        <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700"/>
+        <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700" />
         <div className="label">
-        <div className="element-terry-francine center-itemsss"><p className="text-[30px]">Addresses</p> 
+          <div className="element-terry-francine center-itemsss"><p className="text-[30px]">Addresses</p>
 
-<p className="text-[12px] opacity-50	">Add and manage the addresses you use often.</p>
+            <p className="text-[12px] opacity-50	">Add and manage the addresses you use often.</p>
 
-</div>
-       
-        <p className="element-terry-francine">
-        <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700"/>
+          </div>
+
+          <p className="element-terry-francine">
+            <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700" />
 
             <h1>{addresses.map((address) => (
-                <p className="addres center-itemsss" key={address._id}>
-                  Deleivery Address: <br /> {address.name}, <br /> {address.mobile} ,<br /> {address.address} ,{address.city}, {address.state}, {address.pincode}
-                </p>
-              ))}
-                      <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700"/>
-</h1>
+              <p className="addres center-itemsss" key={address._id}>
+                Deleivery Address: <br /> {address.name}, <br /> {address.mobile} ,<br /> {address.address} ,{address.city}, {address.state}, {address.pincode}
+              </p>
+            ))}
+              <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+            </h1>
           </p>
           <div />
         </div>

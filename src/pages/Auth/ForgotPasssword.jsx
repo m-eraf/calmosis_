@@ -11,9 +11,9 @@ const ForgotPasssword = () => {
   const [phoneNumber, setnumber] = useState("");
   const [otp, setotp] = useState('');
   const [show, setshow] = useState(false);
-  const [final, setfinal] = useState(''); 
+  const [final, setfinal] = useState('');
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const [authh, setAuth] = useAuth();
   const navigate = useNavigate();
 
@@ -39,14 +39,14 @@ const ForgotPasssword = () => {
     try {
       const result = await auth.signInWithPhoneNumber(phoneNumber, verify);
       setfinal(result);
-	  toast.success("Otp sent !", {
-		position: toast.POSITION.BOTTOM_RIGHT,
-		autoClose: 1000,
-		style: {
-		  background: 'black',
-		  color: 'white', 
-		},
-	  });      setshow(true);
+      toast.success("Otp sent !", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 1000,
+        style: {
+          background: 'black',
+          color: 'white',
+        },
+      }); setshow(true);
     } catch (err) {
       alert(err);
       window.location.reload();
@@ -60,7 +60,7 @@ const ForgotPasssword = () => {
 
     try {
       const res = await final.confirm(otp);
-      const ress = await axios.post("https://calmosiss.onrender.com/verify", {
+      const ress = await axios.post("/verify", {
         otp,
         phoneNumber,
       });
@@ -128,7 +128,7 @@ const ForgotPasssword = () => {
           </center>
         </div>
       </main>
-	  <ToastContainer />
+      <ToastContainer />
 
     </Layout>
   );

@@ -9,7 +9,7 @@ const AddPrescriptionDoctor = () => {
 
   useEffect(() => {
     // Fetch orders from your API when the component mounts
-    fetch('https://calmosiss.onrender.com/api/order')
+    fetch('/api/order')
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);
@@ -33,7 +33,7 @@ const AddPrescriptionDoctor = () => {
         // Handle the error, display an error message, etc.
       });
   };
-  
+
   const handleCancel = (userId) => {
     fetch(`/api/update-cancel/${userId}`, {
       method: 'PUT',
@@ -62,24 +62,24 @@ const AddPrescriptionDoctor = () => {
           </div>
           <hr class="h-px w-[150vh] my-8 bg-gray-200 border-0 dark:bg-gray-700" />
           <h1>
-  {orders.length > 0 ? (
-    <ul>
-      <p className="element-terry-francine  flex">
-        {orders.map((order) => (
-          <li key={order._id} className="order-list-item">
-            <p>Name: {order.name}</p>
-            <p>Mobile: {order.number}</p>
-            <p>Approve: {order.aprroval} <span>
-            <button className="buttonn" onClick={() => handleApprove(order.user)}>Approve</button>
-            <button className="buttonn" onClick={() => handleCancel(order.user)}>Cancel</button></span></p>
-          </li>
-        ))}
-      </p>
-    </ul>
-  ) : (
-    <p>No orders found.</p>
-  )}
-</h1>
+            {orders.length > 0 ? (
+              <ul>
+                <p className="element-terry-francine  flex">
+                  {orders.map((order) => (
+                    <li key={order._id} className="order-list-item">
+                      <p>Name: {order.name}</p>
+                      <p>Mobile: {order.number}</p>
+                      <p>Approve: {order.aprroval} <span>
+                        <button className="buttonn" onClick={() => handleApprove(order.user)}>Approve</button>
+                        <button className="buttonn" onClick={() => handleCancel(order.user)}>Cancel</button></span></p>
+                    </li>
+                  ))}
+                </p>
+              </ul>
+            ) : (
+              <p>No orders found.</p>
+            )}
+          </h1>
 
         </div>
       </div>

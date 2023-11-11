@@ -13,7 +13,7 @@ const DashboardOrders = () => {
     // Check if the user is logged in
     if (auth.user) {
       // Make an API request to fetch the orders data for the logged-in user
-      fetch(`https://calmosiss.onrender.com/api/orders?userId=${auth?.user?._id}`)
+      fetch(`/api/orders?userId=${auth?.user?._id}`)
         .then((response) => response.json())
         .then((data) => {
           setOrders(data);
@@ -64,10 +64,10 @@ const DashboardOrders = () => {
                     <p className="transaction-id">
                       Transaction ID: <span>{order.transactionId}</span>
                     </p>
-                    {order.lineItems.map((item)=>(
+                    {order.lineItems.map((item) => (
                       <li key={item._id}>
-                Name: {item.name}, Price: {item.price}, Quantity: {item.quantity}
-              </li>
+                        Name: {item.name}, Price: {item.price}, Quantity: {item.quantity}
+                      </li>
                     ))}
                     <p className="approval-status">
                       Total Amount: <span>{order.price}</span>
@@ -87,9 +87,8 @@ const DashboardOrders = () => {
           <div className="pagination">
             <button
               onClick={goToPreviousPage}
-              className={`page-button ${
-                currentPage === 1 ? "disabled" : ""
-              }`}
+              className={`page-button ${currentPage === 1 ? "disabled" : ""
+                }`}
               disabled={currentPage === 1}
             >
               {"<"}
@@ -100,9 +99,8 @@ const DashboardOrders = () => {
                 <button
                   key={number + 1}
                   onClick={() => paginate(number + 1)}
-                  className={`page-button ${
-                    number + 1 === currentPage ? "active" : ""
-                  }`}
+                  className={`page-button ${number + 1 === currentPage ? "active" : ""
+                    }`}
                 >
                   {number + 1}
                 </button>
@@ -111,11 +109,10 @@ const DashboardOrders = () => {
 
             <button
               onClick={goToNextPage}
-              className={`page-button ${
-                currentPage === Math.ceil(orders.length / ordersPerPage)
+              className={`page-button ${currentPage === Math.ceil(orders.length / ordersPerPage)
                   ? "disabled"
                   : ""
-              }`}
+                }`}
               disabled={
                 currentPage === Math.ceil(orders.length / ordersPerPage)
               }
