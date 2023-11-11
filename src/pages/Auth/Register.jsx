@@ -34,7 +34,7 @@ const Register = () => {
       });
 
       if (res && res.data.success) {
-        await axios.post("/email/welcome", { email });
+        await axios.post("https://calmosiss.onrender.com/email/welcome", { email });
         toast.success(res.data && res.data.message);
         setAuth({
           ...auth,

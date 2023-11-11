@@ -115,36 +115,69 @@ const PeaceMantra = () => {
   };
   
   const makePayment = async () => {
-    const stripe = await loadStripe("pk_live_51O96PTSChD17SEYNqVr4YlBhQTBBRLFlMtQTq3qI5aLYiu3dBXk9x4TFSAhSueiKBbwYaGRmZiDPkSSabtyufbiQ00nGso4JIS"); 
-      const body = {
+    const stripe = await loadStripe("pk_test_51O9B6xSFFEmFyF5DWu9zJHpIhBlZthgNtmFAxmyHYHZNzNRpEvaJbQoPQcyQGJL4IIIOaUWbZsxn2jQCc10O8oCG00gOQbImj1");
+  
+    // Check if there are existing addresses
+    const selectedAddress = addresses.length > 0 ? addresses[0] : null;
+
+    const body = {
       products: cartItems,
-      peace_img: peace_img, 
+      peace_img: peace_img,
       user: auth?.user?._id,
-      username:auth?.user?.name,
+      username: auth?.user?.name,
       number: auth?.user?.phoneNumber,
       email: auth?.user?.email,
+      addresss: selectedAddress
+        ? {
+            name: selectedAddress.name,
+            email: selectedAddress.email,
+            mobile: selectedAddress.mobile,
+            gender: selectedAddress.gender,
+            age: selectedAddress.age,
+            address: selectedAddress.address,
+            city: selectedAddress.city,
+            state: selectedAddress.state,
+            pincode: selectedAddress.pincode,
+          }
+        : {
+            name,
+            email,
+            mobile,
+            gender,
+            age,
+            address,
+            city,
+            state,
+            pincode,
+          },
     };
-
+  
     const headers = {
       "Content-Type": "application/json",
     };
   
-    const response = await fetch("https://calmosiss.onrender.com/api/create-checkout-session", {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
+    try {
+      const response = await fetch("https://calmosiss.onrender.com/api/create-checkout-session", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      });
   
-    const session = await response.json();
-    // Redirect to the Stripe Checkout pa
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+      const session = await response.json();
   
-    if (result.error) {
-      console.error(result.error);
+      // Redirect to the Stripe Checkout page
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+  
+      if (result.error) {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
+  
   
   const increaseQuantity = (itemId, currentQuantity) => {
     // Calculate the new quantity
