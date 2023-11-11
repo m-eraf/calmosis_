@@ -93,6 +93,7 @@ const SleepMantra = () => {
   const [is10ml, setIs10ml] = useState(true);
   const [is30ml, setIs30ml] = useState(false);
 
+  const price = 4500;
   const [quantity, setQuantity] = useState(1);
   const [, setScrolled] = useState(false);
 
@@ -775,7 +776,7 @@ const SleepMantra = () => {
                 </p>
               </div>
               <div className="price">
-                ₹4500
+                ₹{price}
               </div>
 
               <div className="row">
@@ -815,7 +816,7 @@ const SleepMantra = () => {
                 </div>
               </div>
 
-              <div className="quantity">
+              <div className="quantityBox">
                 <p>Quantity</p>
                 <div className="quan">
                   <span
@@ -848,7 +849,7 @@ const SleepMantra = () => {
                   }}
                   className={isOneTime ? "selected" : ""}
                 >
-                  One-time purchase: ₹4500
+                  One-time purchase: ₹{price * quantity}
                 </span>
 
 
@@ -856,7 +857,7 @@ const SleepMantra = () => {
 
               <div className="btns one">
                 <div className="btn" onClick={addToCart}>
-                  <a href="#">
+                  <a href="#" style={{ marginLeft: "4px" }}>
                     {loading ? (
                       <div className="simple-spinner">
                         <span></span>
@@ -887,7 +888,7 @@ const SleepMantra = () => {
                     </svg>
                   </a>
                 </div>
-                <div className="btn">
+                {/* <div className="btn">
                   <a href="/checkout">
                     <span>Checkout</span>
                     <svg
@@ -912,7 +913,7 @@ const SleepMantra = () => {
                       />
                     </svg>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
 
