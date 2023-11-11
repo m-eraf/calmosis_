@@ -432,7 +432,7 @@ const PeaceMantra = () => {
     {addresses.length > 0 ? (
     <>
       <div className="btn" onClick={makePayment}>
-        <a onClick={makePayment}>
+        <a >
           <span>Proceed to Payment</span>
           <svg width="58" height="46" viewBox="0 0 58 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1.5" y="1.5" width="55" height="43" fill="#F2D101" stroke="#F2D101" strokeWidth="3" />
