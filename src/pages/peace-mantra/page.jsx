@@ -182,13 +182,6 @@ const PeaceMantra = () => {
     }
   };
 
-  useEffect(() => {
-    if (isCart) {
-      // Reload the cart items when isCart state changes
-      fetchCartItems();
-    }
-  }, [isCart]);
-
   const fetchCartItems = () => {
     if (auth.user) {
       fetch(`/get-cart?userId=${auth?.user?._id}`)
@@ -325,10 +318,8 @@ const PeaceMantra = () => {
     }, 1000);
   };
 
-  const addToCart = async (e) => {
-    e.preventDefault();
+  const addToCart = async (redirect) => {
     setLoading(true); // Set loading state to true when submitting the form
-    fetchCartItems();
 
     if (!auth?.user) {
       // If the user is not logged in, display an error toast message
@@ -340,7 +331,6 @@ const PeaceMantra = () => {
           color: "white",
         },
       });
-      fetchCartItems();
       setLoading(false); // Set loading state back to false
       return;
     }
@@ -371,17 +361,23 @@ const PeaceMantra = () => {
         body: JSON.stringify(itemData),
       });
 
+      fetchCartItems();
+
       if (response.status === 201) {
         // Item added to cart successfully
         console.log("Item added to cart successfully");
-        toast.success("Item added to cart", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 1000,
-          style: {
-            background: "black",
-            color: "white",
-          },
-        });
+        if (redirect) {
+          window.location.href = "/checkout";
+        } else {
+          toast.success("Item added to cart", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1000,
+            style: {
+              background: "black",
+              color: "white",
+            },
+          });
+        }
         setLoading(false); // Set loading state back to false when the API request is complete
       } else {
         alert("Failed to add item to cart. Please try again");
@@ -557,7 +553,6 @@ const PeaceMantra = () => {
           <span
             onClick={() => {
               setIsCart(!isCart);
-              fetchCartItems();
             }}
             href="#"
           >
@@ -842,17 +837,16 @@ const PeaceMantra = () => {
                   onClick={() => {
                     setIsOneTime(true);
                     setIsSubscription(false);
+                    addToCart(true);
                   }}
                   className={isOneTime ? "selected" : ""}
                 >
                   One-time purchase: ₹{price * quantity}
                 </span>
-
-
               </div>
 
               <div className="btns one">
-                <div className="btn" onClick={addToCart}>
+                <div className="btn" onClick={() => addToCart(false)}>
                   <a href="#" style={{ marginLeft: "4px" }}>
                     {loading ? (
                       <div className="simple-spinner">
