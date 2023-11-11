@@ -157,7 +157,7 @@ const PeaceMantra = () => {
     };
 
     try {
-      const response = await fetch("https://calmosiss.onrender.com/api/create-checkout-session", {
+      const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: headers,
         body: JSON.stringify(body),
